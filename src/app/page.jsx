@@ -13,7 +13,7 @@ const Homepage = () => {
         {/* Text */}
         <div className="h-1/2 flex flex-col gap-8 lg:w-1/2 lg:h-full items-center justify-center">
           <h1 className="text-4xl md:text-6xl font-bold">Full Stack Web Developer</h1>
-          <p className="md:text-xl">Hi, I'm Abhijith. I'm a full stack web developer.
+          <p className="md:text-xl">Hi, I&apos;m Abhijith. I&apos;m a full stack web developer.
             I love to build beautiful websites.
           </p>
           {/* buttons */}
