@@ -131,7 +131,7 @@ const items = [
     title: "Portfolio Website",
     desc: "A personal portfolio built using Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth animations and interactive elements. The project highlights professional achievements, skills, and showcases of past work, with a focus on clean design and seamless user experience.",
     img: "/portfolioSS.png",
-    link: "",
+    link: "https://abhi-porfolio-zeta.vercel.app/",
   },
   {
     id: 2,
