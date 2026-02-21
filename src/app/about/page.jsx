@@ -25,8 +25,8 @@ const AboutPage = () => {
           <section className="space-y-6">
             <h1 className="font-bold text-3xl">About Me</h1>
             <p className="text-lg">
-              I'm a first-year Master's student in Computer Science at Northeastern
-              University's Khoury College (4.0 GPA, graduating June 2027),
+              I&apos;m a first-year Master&apos;s student in Computer Science at Northeastern
+              University&apos;s Khoury College (4.0 GPA, graduating June 2027),
               specializing in full-stack development and machine learning
               applications.
             </p>
@@ -39,7 +39,7 @@ const AboutPage = () => {
             <p className="text-lg">
               My recent work includes building Kambaz, a full-featured learning
               management system using Next.js and MongoDB, and developing NLP
-              models for sentiment analysis that achieved 95.4% accuracy. I'm
+              models for sentiment analysis that achieved 95.4% accuracy. I&apos;m
               passionate about creating scalable web applications that solve
               real problems.
             </p>
@@ -163,8 +163,8 @@ const AboutPage = () => {
           </section>
 
           <section className="pt-8 pb-48">
-            <h2 className="font-bold text-2xl">What I'm Looking For</h2>
-            <p className="mt-2">I'm actively seeking Summer 2026 software engineering internships and co-op opportunities where I can contribute to building scalable systems and work with talented teams.</p>
+            <h2 className="font-bold text-2xl">What I&apos;m Looking For</h2>
+            <p className="mt-2">I&apos;m actively seeking Summer 2026 software engineering internships and co-op opportunities where I can contribute to building scalable systems and work with talented teams.</p>
           </section>
         </div>
 
