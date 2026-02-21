@@ -1,16 +1,13 @@
 "use client";
 import Brain from "@/components/brain";
 import { motion, useInView, useScroll } from "framer-motion";
-import Image from "next/image";
 import { useRef } from "react";
 
 const AboutPage = () => {
   const containerRef = useRef();
-
   const { scrollYProgress } = useScroll({ container: containerRef });
 
   const skillRef = useRef();
-  // const isSkillRefInView = useInView(skillRef, {once:true});
   const isSkillRefInView = useInView(skillRef, { margin: "-100px" });
 
   const experienceRef = useRef();
@@ -23,260 +20,154 @@ const AboutPage = () => {
       animate={{ y: "0%" }}
       transition={{ duration: 1 }}
     >
-      {/* CONTAINER */}
       <div className="h-full overflow-scroll lg:flex" ref={containerRef}>
-        {/* TEXT CONTAINER */}
-        <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-48 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-64 lg:w-2/3 lg:pr-0 xl:w-1/2">
-          {/* BIOGRAPHY CONTAINER */}
-          <div className="flex flex-col gap-12 justify-center">
-            {/* BIOGRAPHY IMAGE */}
-            {/* <Image
-              src="/abhi.jpg"
-              alt="Abhijith Pandiri"
-              width={150}
-              height={150}
-              className="w-36 h-36 rounded-full object-cover"
-            /> */}
-
-            {/* BIOGRAPHY TITLE */}
-            {/* <h1 className="font-bold text-2xl">BIOGRAPHY</h1> */}
-            {/* BIOGRAPHY DESC */}
+        <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-48 flex flex-col gap-12 lg:w-2/3 xl:w-1/2">
+          <section className="space-y-6">
+            <h1 className="font-bold text-3xl">About Me</h1>
             <p className="text-lg">
-            I am Abhijith Pandiri, a Computer Science enthusiast with a focus on web development 
-            using the MERN stack and a strong foundation in Java and Data Structures & Algorithms (DSA). I 
-            enjoy building scalable applications while solving complex problems through optimized code. My 
-            expertise in Java and DSA has helped me enhance my problem-solving skills and develop efficient 
-            solutions for real-world challenges. Along with my passion for web development, I continuously work 
-            on improving my understanding of algorithms and data structures to create more robust applications.
+              I'm a first-year Master's student in Computer Science at Northeastern
+              University's Khoury College (4.0 GPA, graduating June 2027),
+              specializing in full-stack development and machine learning
+              applications.
             </p>
-            {/* BIOGRAPHY QUOTE */}
-            {/* <span className="italic">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </span> */}
-            {/* BIOGRAPHY SCROLL SVG */}
-            <motion.svg
-              initial={{ opacity: 0.2, y: 0 }}
-              animate={{ opacity: 1, y: "10px" }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
-            >
-              <path
-                d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
-              <path
-                d="M15 11L12 14L9 11"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-            </motion.svg>
-          </div>
-          {/* SKILLS CONTAINER */}
-          <div className="flex flex-col gap-12 justify-center" ref={skillRef}>
-            {/* SKILL TITLE */}
-            <motion.h1
-              initial={{ x: "-300px" }}
+            <p className="text-lg">
+              Currently, I serve as Secretary &amp; Lead Developer for the
+              Computer Society of India Student Branch, where I coordinate a
+              17-member team and manage platforms serving over 500 students
+              across multiple states.
+            </p>
+            <p className="text-lg">
+              My recent work includes building Kambaz, a full-featured learning
+              management system using Next.js and MongoDB, and developing NLP
+              models for sentiment analysis that achieved 95.4% accuracy. I'm
+              passionate about creating scalable web applications that solve
+              real problems.
+            </p>
+            <div className="flex gap-3">
+              <a href="/resume.pdf" className="px-4 py-2 bg-black text-white rounded">
+                Download Resume
+              </a>
+              <a href="/contact" className="px-4 py-2 border border-black rounded">
+                Contact Me
+              </a>
+            </div>
+          </section>
+
+          <section ref={skillRef} className="pt-8">
+            <motion.h2
+              initial={{ x: -200 }}
               animate={isSkillRefInView ? { x: 0 } : {}}
-              transition={{ delay: 0.2 }}
               className="font-bold text-2xl"
             >
-              SKILLS
-            </motion.h1>
-            {/* SKILL LIST */}
+              Technical Skills
+            </motion.h2>
+
             <motion.div
-              initial={{ x: "-300px" }}
+              initial={{ x: -200 }}
               animate={isSkillRefInView ? { x: 0 } : {}}
-              className="flex gap-4 flex-wrap"
+              className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Java
+              <div>
+                <div className="font-semibold mb-2">Frontend Development</div>
+                <div className="flex flex-wrap">
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">React.js</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Next.js</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Redux Toolkit</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Tailwind CSS</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Bootstrap</span>
+                </div>
               </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Data Structures and Algorithms
+
+              <div>
+                <div className="font-semibold mb-2">Backend Development</div>
+                <div className="flex flex-wrap">
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Node.js</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Express.js</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">MongoDB</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">PostgreSQL</span>
+                </div>
               </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                HTML
+
+              <div>
+                <div className="font-semibold mb-2">Programming Languages</div>
+                <div className="flex flex-wrap">
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">JavaScript/TypeScript</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Python</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Java</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">SQL</span>
+                </div>
               </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                CSS
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                JavaScript
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                React.js
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Next.js
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Tailwind CSS
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Bootstrap
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                MongoDB
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                SQL
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Node.js
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Express.js
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Redux Toolkit
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Framer Motion
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                Git
-              </div>
-              <div className="rounded  p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">
-                GitHub
+
+              <div>
+                <div className="font-semibold mb-2">Tools &amp; Platforms</div>
+                <div className="flex flex-wrap">
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Git/GitHub</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">AWS</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Vercel</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Render</span>
+                  <span className="inline-block bg-black text-white text-sm px-3 py-1 rounded-full mr-2 mb-2">Postman</span>
+                </div>
               </div>
             </motion.div>
-            {/* SKILL SCROLL SVG */}
-            <motion.svg
-              initial={{ opacity: 0.2, y: 0 }}
-              animate={{ opacity: 1, y: "10px" }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
-            >
-              <path
-                d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
-              <path
-                d="M15 11L12 14L9 11"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-            </motion.svg>
-          </div>
-          {/* EXPERIENCE CONTAINER */}
-          <div
-            className="flex flex-col gap-12 justify-center pb-48"
-            ref={experienceRef}
-          >
-            {/* EXPERIENCE TITLE */}
-            <motion.h1
-              initial={{ x: "-300px" }}
-              animate={isExperienceRefInView ? { x: "0" } : {}}
-              transition={{ delay: 0.2 }}
+
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <div className="text-sm font-medium">Frontend proficiency</div>
+                <div className="w-full bg-gray-200 rounded h-2 mt-1">
+                  <div className="bg-black h-2 rounded" style={{ width: "85%" }} />
+                </div>
+              </div>
+              <div>
+                <div className="text-sm font-medium">Backend proficiency</div>
+                <div className="w-full bg-gray-200 rounded h-2 mt-1">
+                  <div className="bg-black h-2 rounded" style={{ width: "75%" }} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section ref={experienceRef} className="pt-8">
+            <motion.h2
+              initial={{ x: -200 }}
+              animate={isExperienceRefInView ? { x: 0 } : {}}
               className="font-bold text-2xl"
             >
-              Education
-            </motion.h1>
-            {/* EXPERIENCE LIST */}
-            <motion.div
-              initial={{ x: "-300px" }}
-              animate={isExperienceRefInView ? { x: "0" } : {}}
-              className=""
-            >
-              {/* EXPERIENCE LIST ITEM */}
-              <div className="flex justify-between h-48">
-                {/* LEFT */}
-                <div className="w-1/3 ">
-                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">
-                    CVR College of Engineering
-                  </div>
-                  <div className="p-3 text-sm italic">
-                    B.Tech in Computer Science{" "}
-                  </div>
-                  {/* JOB DATE */}
-                  <div className="p-3 text-red-400 text-sm font-semibold">
-                    2021 - 2025
-                  </div>
-                  {/* <div className="p-1 rounded bg-white text-sm font-semibold w-fit">
-                    Apple
-                  </div> */}
-                </div>
-                {/* CENTER */}
-                <div className="w-1/6 flex justify-center">
-                  {/* LINE */}
-                  <div className="w-1 h-full bg-gray-600 rounded relative">
-                    {/* LINE CIRCLE */}
-                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
-                  </div>
-                </div>
-                {/* RIGHT */}
-                <div className="w-1/3 "></div>
+              Experience
+            </motion.h2>
+
+            <div className="mt-4">
+              <div className="font-semibold">Secretary &amp; Lead Developer</div>
+              <div className="text-sm italic">Computer Society of India Student Branch • Present</div>
+              <ul className="list-disc ml-5 mt-2">
+                <li>Coordinate 17-member technical team managing platforms for 500+ students</li>
+                <li>Organize technical workshops and events across multiple states</li>
+                <li>Lead full-stack development initiatives and student database management</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="pt-8">
+            <h2 className="font-bold text-2xl">Education</h2>
+            <div className="mt-4 space-y-2">
+              <div>
+                <div className="font-semibold">Northeastern University — Master of Science in Computer Science</div>
+                <div className="text-sm italic">Boston, MA • Sep 2025 - Jun 2027 (Expected) • GPA: 4.0/4.0</div>
+                <div className="text-sm mt-1">Relevant Coursework: Algorithms (CS 5800), Natural Language Processing (CS 6120)</div>
               </div>
-              {/* EXPERIENCE LIST ITEM */}
-              <div className="flex justify-between h-48">
-                {/* LEFT */}
-                <div className="w-1/3 "></div>
-                {/* CENTER */}
-                <div className="w-1/6 flex justify-center">
-                  {/* LINE */}
-                  <div className="w-1 h-full bg-gray-600 rounded relative">
-                    {/* LINE CIRCLE */}
-                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
-                  </div>
-                </div>
-                {/* RIGHT */}
-                <div className="w-1/3 ">
-                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">
-                    Narayana Junior College
-                  </div>
-                  <div className="p-3 text-sm italic">
-                    Intermediate in MPC{" "}
-                  </div>
-                  <div className="p-3 text-red-400 text-sm font-semibold">
-                    2019 - 2021{" "}
-                  </div>
-                  {/* <div className="p-1 rounded bg-white text-sm font-semibold w-fit">
-                    Microsoft
-                  </div> */}
-                </div>
+
+              <div>
+                <div className="font-semibold">CVR College of Engineering — B.Tech in Computer Science &amp; Engineering</div>
+                <div className="text-sm italic">2021 - 2025 • GPA: 9.03/10.0</div>
               </div>
-              {/* Education LIST ITEM */}
-              <div className="flex justify-between h-48">
-                {/* LEFT */}
-                <div className="w-1/3 ">
-                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">
-                    Ramadevi Public School{" "}
-                  </div>
-                  <div className="p-3 text-sm italic">
-                    ICSE{" "}
-                  </div>
-                  {/* JOB DATE */}
-                  <div className="p-3 text-red-400 text-sm font-semibold">
-                    2018 - 2019{" "}
-                  </div>
-                </div>
-                {/* CENTER */}
-                <div className="w-1/6 flex justify-center">
-                  {/* LINE */}
-                  <div className="w-1 h-full bg-gray-600 rounded relative">
-                    {/* LINE CIRCLE */}
-                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
-                  </div>
-                </div>
-                {/* RIGHT */}
-                <div className="w-1/3 "></div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </section>
+
+          <section className="pt-8 pb-48">
+            <h2 className="font-bold text-2xl">What I'm Looking For</h2>
+            <p className="mt-2">I'm actively seeking Summer 2026 software engineering internships and co-op opportunities where I can contribute to building scalable systems and work with talented teams.</p>
+          </section>
         </div>
-        {/* SVG CONTAINER */}
+
         <div className="hidden lg:block w-1/3 sticky top-0 z-30 xl:w-1/2">
           <Brain scrollYProgress={scrollYProgress} />
         </div>
