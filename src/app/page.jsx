@@ -2,32 +2,74 @@
 import Image from "next/image";
 import { motion } from "framer-motion"
 import Link from "next/link";
+
 const Homepage = () => {
   return (
-    <motion.div className="h-full" initial={{ y: "-200vh" }} animate={{ y: "0%" }} transition={{ duration: 1 }}>
-      <div className=" h-full flex lg:flex-row flex-col px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48">
+    <motion.div
+      className="h-full"
+      initial={{ y: "-200vh" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 1 }}
+    >
+      <div className="h-full flex lg:flex-row flex-col px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48">
         {/* Image */}
-        <div className="h-1/2 lg:w-1/2 lg:h-full relative ">
-          <Image src="/hero.png" fill className="object-contain" alt="logo" />
-        </div >
+        <div className="h-1/2 lg:w-1/2 lg:h-full relative">
+          <Image src="/hero.png" fill className="object-contain" alt="Abhijith Pandiri" />
+        </div>
+
         {/* Text */}
-        <div className="h-1/2 flex flex-col gap-8 lg:w-1/2 lg:h-full items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-bold">Full Stack Web Developer</h1>
-          <p className="md:text-xl">Hi, I&apos;m Abhijith. I&apos;m a full stack web developer.
-            I love to build beautiful websites.
+        <div className="h-1/2 flex flex-col gap-4 lg:gap-6 lg:w-1/2 lg:h-full items-center justify-center">
+          <div className="text-center lg:text-left">
+            <h1 className="text-3xl md:text-5xl font-bold">
+              CS Master&apos;s Student & Software Engineer
+            </h1>
+            <p className="text-xs md:text-sm text-gray-600 mt-1">
+              Northeastern University • Boston, MA • 4.0 GPA
+            </p>
+          </div>
+
+          <p className="text-sm md:text-base text-center lg:text-left">
+            Hi, I&apos;m Abhijith. I build scalable applications that bridge modern web
+            technologies with machine learning. Specializing in full-stack development
+            (React, Next.js, Node.js) and NLP.
           </p>
-          {/* buttons */}
-          <div className=" w-full flex gap-4">
-            <button className="p-4 rounded-lg ring-1 ring-black bg-black text-white">
-              <Link href="/portfolio">View My Work</Link>
+
+          <div className="flex flex-wrap gap-1.5 text-xs justify-center lg:justify-start">
+            <span className="bg-black text-white px-2 py-1 rounded-full">React</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">Next.js</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">Node.js</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">MongoDB</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">Python</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">TensorFlow</span>
+          </div>
+
+          {/* Buttons */}
+          <div className="w-full flex gap-3 flex-wrap justify-center lg:justify-start">
+            <Link href="/portfolio">
+              <button className="px-4 py-2 text-sm rounded-lg ring-1 ring-black bg-black text-white hover:bg-gray-800 transition">
+                View My Work
               </button>
-            <button className="p-4 rounded-lg ring-1 ring-black">
-              <Link href="/contact">Contact Me</Link>
+            </Link>
+            <Link href="/contact">
+              <button className="px-4 py-2 text-sm rounded-lg ring-1 ring-black hover:bg-gray-100 transition">
+                Contact Me
               </button>
+            </Link>
+            <Link href="/resume.pdf">
+              <button className="px-4 py-2 text-sm rounded-lg ring-1 ring-black hover:bg-gray-100 transition">
+                Resume
+              </button>
+            </Link>
+          </div>
+
+          <div className="text-xs text-gray-600 text-center lg:text-left">
+            <p>📧 pandiri.a@northeastern.edu</p>
+            <p className="mt-0.5">🎯 Open for Summer 2026 Internships</p>
           </div>
         </div>
       </div>
-    </motion.div>);
+    </motion.div>
+  );
 };
 
 export default Homepage;

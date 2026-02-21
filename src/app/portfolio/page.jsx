@@ -1,169 +1,284 @@
-// "use client";
-// import { motion, useScroll, useTransform } from "framer-motion";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useRef } from "react";
-
-// const items = [
-//   {
-//     id: 1,
-//     color: "from-red-300 to-blue-300",
-//     title: "React Commerce",
-//     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-//     img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-//     link: "https://lama.dev",
-//   },
-//   {
-//     id: 2,
-//     color: "from-blue-300 to-violet-300",
-//     title: "Next.js Medium Blog",
-//     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-//     img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-//     link: "https://lama.dev",
-//   },
-//   {
-//     id: 3,
-//     color: "from-violet-300 to-purple-300",
-//     title: "Vanilla Book App",
-//     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-//     img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-//     link: "https://lama.dev",
-//   },
-//   {
-//     id: 4,
-//     color: "from-purple-300 to-red-300",
-//     title: "Spotify Music App",
-//     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-//     img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-//     link: "https://lama.dev",
-//   },
-// ];
-
-// const PortfolioPage = () => {
-//   const ref = useRef();
-
-//   const { scrollYProgress } = useScroll({ target: ref });
-//   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-
-//   return (
-//     <motion.div
-//       className="h-full"
-//       initial={{ y: "-200vh" }}
-//       animate={{ y: "0%" }}
-//       transition={{ duration: 1 }}
-//     >
-//       <div className="h-[600vh] relative" ref={ref}>
-//         <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
-//           My Works
-//         </div>
-//         <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
-//           <motion.div style={{ x }} className="flex">
-//             <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300" />
-//             {items.map((item) => (
-//               <div
-//                 className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color}`}
-//                 key={item.id}
-//               >
-//                 <div className="flex flex-col gap-8 text-white">
-//                   <h1 className="text-xl font-bold md:text-4xl lg:text-6xl xl:text-8xl">
-//                     {item.title}
-//                   </h1>
-//                   <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[500px] lg:h-[350px] xl:w-[600px] xl:h-[420px]">
-//                     <Image src={item.img} alt="" fill />
-//                   </div>
-//                   <p className="w-80 md:w96 lg:w-[500px] lg:text-lg xl:w-[600px]">
-//                     {item.desc}
-//                   </p>
-//                   <Link href={item.link} className="flex justify-end">
-//                     <button className="p-2 text-sm md:p-4 md:text-md lg:p-8 lg:text-lg bg-white text-gray-600 font-semibold m-4 rounded">See Demo</button>
-//                   </Link>
-//                 </div>
-//               </div>
-//             ))}
-//           </motion.div>
-//         </div>
-//       </div>
-//       <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
-//         <h1 className="text-8xl">Do you have a project?</h1>
-//         <div className="relative">
-//           <motion.svg
-//             animate={{ rotate: 360 }}
-//             transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-//             viewBox="0 0 300 300"
-//             className="w-64 h-64 md:w-[500px] md:h-[500px] "
-//           >
-//             <defs>
-//               <path
-//                 id="circlePath"
-//                 d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "
-//               />
-//             </defs>
-//             <text fill="#000">
-//               <textPath xlinkHref="#circlePath" className="text-xl">
-//                 Front-end Developer and UI Designer
-//               </textPath>
-//             </text>
-//           </motion.svg>
-//           <Link
-//             href="/contact"
-//             className="w-16 h-16 md:w-28 md:h-28 absolute top-0 left-0 right-0 bottom-0 m-auto bg-black text-white rounded-full flex items-center justify-center"
-//           >
-//             Hire Me
-//           </Link>
-//         </div>
-//       </div>
-//     </motion.div>
-//   );
-// };
-
-// export default PortfolioPage;
-
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const items = [
   {
     id: 1,
-    color: "from-red-300 to-blue-300",
-    title: "Portfolio Website",
-    desc: "A personal portfolio built using Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth animations and interactive elements. The project highlights professional achievements, skills, and showcases of past work, with a focus on clean design and seamless user experience.",
-    img: "/portfolioSS.png",
-    link: "https://abhi-porfolio-zeta.vercel.app/",
+    color: "from-purple-300 to-pink-300",
+    title: "Kambaz LMS",
+    desc: "Full-featured Canvas-like learning management system with course management, assignments, grading, and role-based access control. Built with Next.js, React, Redux Toolkit, and MongoDB.",
+    url: "https://fa25-kambaz-next-js-git-project-abhijiths-projects-7705a139.vercel.app/Account/Signin",
+    github: "https://github.com/Abhi-2306/fa25-kambaz-next-js",
+    tags: ["Next.js", "React", "Redux", "MongoDB"]
   },
   {
     id: 2,
-    color: "from-blue-300 to-violet-300",
-    title: "Next.js Blog Website",
-    desc: "A platform built using Next.js for server-side rendering and static site generation, with authentication handled by NextAuth for login via credentials and GitHub. It includes an admin panel for managing users and posts, and bcryptjs is used for secure password hashing. MongoDB serves as the database. ",
-    img: "/blog.png",
-    link: "https://blog-2p47qi4aa-abhijiths-projects-7705a139.vercel.app/",
+    color: "from-green-300 to-blue-300",
+    title: "NLP Sentiment Analyzer",
+    desc: "Machine learning model achieving 95.4% accuracy on sentiment classification. Built using Python, TensorFlow, and Word2Vec embeddings with comprehensive preprocessing pipeline.",
+    url: "https://sentiment-analyzer-demo.vercel.app",
+    github: "https://github.com/Abhi-2306/SentimentAnalysis",
+    tags: ["Python", "TensorFlow", "NLP", "ML"]
   },
   {
     id: 3,
-    color: "from-violet-300 to-purple-300",
-    title: "E-Commerce Website",
-    desc: "An e-commerce website featuring product filtering by brand and category, sorting by price and rating, and a shopping cart. It uses the MERN stack, Redux Toolkit for state management, JWT for secure authentication, MongoDB for database management, and Stripe for payment integration. The admin panel allows product and order management.",
-    img: "/ecommerce.png",
-    link: "https://mern-ecommerce-three-xi.vercel.app/",
+    color: "from-red-300 to-orange-300",
+    title: "Portfolio Website",
+    desc: "Personal portfolio built using Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth animations and interactive elements.",
+    url: "https://abhi-porfolio-zeta.vercel.app/",
+    github: "https://github.com/abhi-2306/portfolio",
+    tags: ["Next.js", "Tailwind", "Framer Motion"]
   },
   {
     id: 4,
+    color: "from-blue-300 to-violet-300",
+    title: "Next.js Blog Platform",
+    desc: "Full-featured blogging platform with NextAuth authentication (credentials & GitHub), admin panel for user/post management, and bcryptjs password hashing.",
+    url: "https://blog-app-two-jade.vercel.app/",
+    github: "https://github.com/Abhi-2306/BlogApp/tree/master",
+    tags: ["Next.js", "NextAuth", "MongoDB"]
+  },
+  {
+    id: 5,
+    color: "from-violet-300 to-purple-300",
+    title: "E-Commerce Platform",
+    desc: "Full-stack e-commerce site with product filtering, cart functionality, and Stripe payments. Built with MERN stack, Redux Toolkit, JWT authentication, and admin panel.",
+    url: "https://mern-ecommerce-three-xi.vercel.app/",
+    github: "https://github.com/Abhi-2306/MERN-ECOMMERCE",
+    tags: ["MERN", "Redux", "Stripe", "JWT"]
+  },
+  {
+    id: 6,
     color: "from-purple-300 to-red-300",
     title: "Food Delivery App",
-    desc: "A food delivery platform that provides food categories, a search option, and add-to-cart functionality. The project is built using the MERN stack, Bootstrap for the user interface, bcrypt for secure authentication, and MongoDB for database storage. ",
-    img: "/tastyterrain.png",
-    link: "https://tasty-terrain-full-stack.vercel.app/",
+    desc: "Food delivery platform with category browsing, search functionality, and cart features. Built using MERN stack with Bootstrap UI and bcrypt authentication.",
+    url: "https://tasty-terrain-full-stack.vercel.app/",
+    github: "https://github.com/Abhi-2306/TastyTerrain-Full_Stack/tree/main/TastyTerrain",
+    tags: ["MERN", "Bootstrap", "bcrypt"]
   },
 ];
 
+const ProjectCard = ({ item, isActive }) => {
+  const [zoom, setZoom] = useState(0.65);
+  const [pointerEvents, setPointerEvents] = useState('none');
+  const [iframeKey, setIframeKey] = useState(0);
+  const [controlsPosition, setControlsPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const iframeRef = useRef(null);
+
+  // Reset iframe when project becomes inactive
+  useEffect(() => {
+    if (!isActive && pointerEvents === 'auto') {
+      setPointerEvents('none');
+      setIframeKey(prev => prev + 1);
+    }
+  }, [isActive, pointerEvents]);
+
+  const handleZoomChange = (newZoom) => {
+    setZoom(newZoom);
+  };
+
+  const toggleInteraction = () => {
+    setPointerEvents(prev => prev === 'auto' ? 'none' : 'auto');
+  };
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - controlsPosition.x,
+      y: e.clientY - controlsPosition.y
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging) {
+      setControlsPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging]);
+
+  return (
+    <div className={`min-h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} px-8 py-6`}>
+      <div className="flex flex-col lg:flex-row gap-6 w-full h-[85vh] max-w-7xl">
+        {/* LEFT SIDE - LIVE WEBSITE */}
+        <div className="flex-1 bg-white rounded-lg shadow-2xl overflow-hidden border-4 border-white/30 relative">
+          {/* Draggable Zoom Controls */}
+          <div 
+            className="absolute z-10 flex gap-2 bg-black/80 rounded-lg p-2 cursor-move"
+            style={{
+              top: controlsPosition.y === 0 ? '12px' : `${controlsPosition.y}px`,
+              right: controlsPosition.x === 0 ? '12px' : 'auto',
+              left: controlsPosition.x !== 0 ? `${controlsPosition.x}px` : 'auto',
+            }}
+            onMouseDown={handleMouseDown}
+          >
+            <span className="px-2 py-1 text-white text-xs cursor-move" title="Drag to move">⋮⋮</span>
+            <button
+              onMouseDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleZoomChange(Math.max(0.4, zoom - 0.05));
+              }}
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold cursor-pointer"
+            >
+              −
+            </button>
+            <span className="px-2 py-1 text-white text-xs font-bold">
+              {Math.round(zoom * 100)}%
+            </span>
+            <button
+              onMouseDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleZoomChange(Math.min(1.2, zoom + 0.05));
+              }}
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold cursor-pointer"
+            >
+              +
+            </button>
+            <button
+              onMouseDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleZoomChange(0.65);
+              }}
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold ml-1 cursor-pointer"
+            >
+              Fit
+            </button>
+          </div>
+
+          {/* Interaction Toggle */}
+          <div className="absolute top-3 left-3 z-10">
+            <button
+              onMouseDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleInteraction();
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                pointerEvents === 'auto' 
+                  ? 'bg-green-600/90 hover:bg-green-700 text-white' 
+                  : 'bg-black/80 hover:bg-black/90 text-white'
+              }`}
+            >
+              {pointerEvents === 'auto' ? '🔓 Interactive' : '🔒 Click to Interact'}
+            </button>
+          </div>
+
+          {/* Overlay when locked */}
+          {pointerEvents === 'none' && (
+            <div 
+              className="absolute inset-0 z-5 bg-transparent cursor-pointer" 
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleInteraction();
+              }}
+              title="Click to enable interaction"
+            />
+          )}
+
+          <div className="w-full h-full overflow-auto">
+            <iframe
+              key={`${item.id}-${iframeKey}`}
+              ref={iframeRef}
+              src={item.url}
+              className="w-full h-full origin-top-left"
+              title={item.title}
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms"
+              style={{
+                transform: `scale(${zoom})`,
+                width: `${100 / zoom}%`,
+                height: `${100 / zoom}%`,
+                pointerEvents: pointerEvents,
+              }}
+            />
+          </div>
+        </div>
+        
+        {/* RIGHT SIDE - PROJECT INFO */}
+        <div className="lg:w-96 flex flex-col justify-center gap-4 text-white">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+            {item.title}
+          </h1>
+          
+          {/* Tech Stack Tags */}
+          <div className="flex flex-wrap gap-2">
+            {item.tags.map((tag, idx) => (
+              <span key={idx} className="bg-white/30 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium">
+                {tag}
+              </span>
+            ))}
+          </div>
+          
+          <p className="text-sm md:text-base leading-relaxed">
+            {item.desc}
+          </p>
+          
+          <div className="flex flex-col gap-3 mt-2">
+            {item.github && (
+              <Link href={item.github} target="_blank" rel="noopener noreferrer">
+                <button className="w-full px-4 py-3 text-sm bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition shadow-lg">
+                  📂 View Code on GitHub
+                </button>
+              </Link>
+            )}
+            <Link href={item.url} target="_blank" rel="noopener noreferrer">
+              <button className="w-full px-4 py-3 text-sm bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
+                🚀 Open Full Site
+              </button>
+            </Link>
+          </div>
+          
+          <div className="text-xs opacity-90 bg-white/10 p-3 rounded-lg mt-2">
+            <p className="font-semibold mb-1">⚠️ Important:</p>
+            <p>• Sites are LOCKED by default</p>
+            <p>• Click 🔒 button to unlock interaction</p>
+            <p>• LOCK 🔓 again before scrolling away</p>
+            <p>• This prevents navigation issues</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PortfolioPage = () => {
   const ref = useRef();
+  const [activeProject, setActiveProject] = useState(0);
 
   const { scrollYProgress } = useScroll({ target: ref });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85.7%"]);
+
+  // Track which project is currently visible
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      const projectIndex = Math.floor(latest * (items.length + 1));
+      setActiveProject(Math.min(projectIndex, items.length));
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   return (
     <motion.div
@@ -179,50 +294,26 @@ const PortfolioPage = () => {
         <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
           <motion.div style={{ x }} className="flex">
             <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300" />
-            {items.map((item) => (
-              <div
-                className={`min-h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color}`}
-                key={item.id}
-              >
-                <div className="flex flex-col gap-8 text-white pt-4">
-                  <h1 className="text-xl font-bold md:text-4xl lg:text-6xl xl:text-8xl">
-                    {item.title}
-                  </h1>
-                  <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[300px] lg:h-[200px] xl:w-[400px] xl:h-[300px]">
-                    <Image
-                      src={item.img}
-                      alt=""
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <p className="w-80 md:w-[500px] lg:w-[700px] lg:text-md xl:w-[800px]">
-                    {item.desc}
-                  </p>
-                  <Link href={item.link} className="flex justify-end">
-                    <button className="p-2 text-sm md:p-4 md:text-md lg:p-4 lg:text-md bg-white text-gray-600 font-semibold m-2 rounded">
-                      View Website
-                    </button>
-                  </Link>
-                </div>
-              </div>
+            {items.map((item, index) => (
+              <ProjectCard key={item.id} item={item} isActive={activeProject === index + 1} />
             ))}
           </motion.div>
         </div>
       </div>
-      <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center mt-10">
+      
+      <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
         <h1 className="text-8xl">Do you have a project?</h1>
         <div className="relative">
           <motion.svg
             animate={{ rotate: 360 }}
             transition={{ duration: 8, ease: "linear", repeat: Infinity }}
             viewBox="0 0 300 300"
-            className="w-64 h-64 md:w-[500px] md:h-[500px] "
+            className="w-64 h-64 md:w-[500px] md:h-[500px]"
           >
             <defs>
               <path
                 id="circlePath"
-                d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "
+                d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0"
               />
             </defs>
             <text fill="#000">
