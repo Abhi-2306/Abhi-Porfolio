@@ -18,7 +18,7 @@ const items = [
     color: "from-green-300 to-blue-300",
     title: "NLP Sentiment Analyzer",
     desc: "Machine learning model achieving 95.4% accuracy on sentiment classification. Built using Python, TensorFlow, and Word2Vec embeddings with comprehensive preprocessing pipeline.",
-    url: "https://sentiment-analyzer-demo.vercel.app",
+    url: "https://nbviewer.org/github/Abhi-2306/SentimentAnalysis/blob/main/Sentiment_Analysis.ipynb",
     github: "https://github.com/Abhi-2306/SentimentAnalysis",
     tags: ["Python", "TensorFlow", "NLP", "ML"]
   },
@@ -28,7 +28,7 @@ const items = [
     title: "Portfolio Website",
     desc: "Personal portfolio built using Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth animations and interactive elements.",
     url: "https://abhi-porfolio-zeta.vercel.app/",
-    github: "https://github.com/abhi-2306/portfolio",
+    github: "https://github.com/Abhi-2306/Abhi-Porfolio",
     tags: ["Next.js", "Tailwind", "Framer Motion"]
   },
   {
@@ -37,7 +37,7 @@ const items = [
     title: "Next.js Blog Platform",
     desc: "Full-featured blogging platform with NextAuth authentication (credentials & GitHub), admin panel for user/post management, and bcryptjs password hashing.",
     url: "https://blog-app-two-jade.vercel.app/",
-    github: "https://github.com/Abhi-2306/BlogApp/tree/master",
+    github: "https://github.com/Abhi-2306/BlogApp",
     tags: ["Next.js", "NextAuth", "MongoDB"]
   },
   {
@@ -55,7 +55,7 @@ const items = [
     title: "Food Delivery App",
     desc: "Food delivery platform with category browsing, search functionality, and cart features. Built using MERN stack with Bootstrap UI and bcrypt authentication.",
     url: "https://tasty-terrain-full-stack.vercel.app/",
-    github: "https://github.com/Abhi-2306/TastyTerrain-Full_Stack/tree/main/TastyTerrain",
+    github: "https://github.com/Abhi-2306/TastyTerrain-Full_Stack",
     tags: ["MERN", "Bootstrap", "bcrypt"]
   },
 ];
@@ -66,7 +66,6 @@ const ProjectCard = ({ item, isActive }) => {
   const [iframeKey, setIframeKey] = useState(0);
   const [controlsPosition, setControlsPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const iframeRef = useRef(null);
 
   // Reset iframe when project becomes inactive
@@ -85,37 +84,27 @@ const ProjectCard = ({ item, isActive }) => {
     setPointerEvents(prev => prev === 'auto' ? 'none' : 'auto');
   };
 
-  const handleMouseDown = (e) => {
+  const handleDragStart = (e) => {
     setIsDragging(true);
-    setDragStart({
-      x: e.clientX - controlsPosition.x,
-      y: e.clientY - controlsPosition.y
+    e.currentTarget.dataset.startX = e.clientX - controlsPosition.x;
+    e.currentTarget.dataset.startY = e.clientY - controlsPosition.y;
+  };
+
+  const handleDrag = (e) => {
+    if (!isDragging || e.clientX === 0) return;
+
+    const startX = parseInt(e.currentTarget.dataset.startX || 0);
+    const startY = parseInt(e.currentTarget.dataset.startY || 0);
+
+    setControlsPosition({
+      x: e.clientX - startX,
+      y: e.clientY - startY
     });
   };
 
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      setControlsPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
-      });
-    }
-  };
-
-  const handleMouseUp = () => {
+  const handleDragEnd = () => {
     setIsDragging(false);
   };
-
-  useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('mouseup', handleMouseUp);
-      };
-    }
-  }, [isDragging]);
 
   return (
     <div className={`min-h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} px-8 py-6`}>
@@ -123,23 +112,25 @@ const ProjectCard = ({ item, isActive }) => {
         {/* LEFT SIDE - LIVE WEBSITE */}
         <div className="flex-1 bg-white rounded-lg shadow-2xl overflow-hidden border-4 border-white/30 relative">
           {/* Draggable Zoom Controls */}
-          <div 
-            className="absolute z-10 flex gap-2 bg-black/80 rounded-lg p-2 cursor-move"
+          <div
+            draggable
+            onDragStart={handleDragStart}
+            onDrag={handleDrag}
+            onDragEnd={handleDragEnd}
+            className="absolute z-10 flex gap-2 bg-black/80 rounded-lg p-2 cursor-move select-none"
             style={{
-              top: controlsPosition.y === 0 ? '12px' : `${controlsPosition.y}px`,
-              right: controlsPosition.x === 0 ? '12px' : 'auto',
-              left: controlsPosition.x !== 0 ? `${controlsPosition.x}px` : 'auto',
+              top: controlsPosition.y ? `${controlsPosition.y}px` : '12px',
+              left: controlsPosition.x ? `${controlsPosition.x}px` : 'auto',
+              right: !controlsPosition.x ? '12px' : 'auto',
             }}
-            onMouseDown={handleMouseDown}
           >
             <span className="px-2 py-1 text-white text-xs cursor-move" title="Drag to move">⋮⋮</span>
             <button
-              onMouseDown={(e) => e.stopPropagation()}
               onClick={(e) => {
                 e.stopPropagation();
                 handleZoomChange(Math.max(0.4, zoom - 0.05));
               }}
-              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold cursor-pointer"
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold"
             >
               −
             </button>
@@ -147,22 +138,20 @@ const ProjectCard = ({ item, isActive }) => {
               {Math.round(zoom * 100)}%
             </span>
             <button
-              onMouseDown={(e) => e.stopPropagation()}
               onClick={(e) => {
                 e.stopPropagation();
                 handleZoomChange(Math.min(1.2, zoom + 0.05));
               }}
-              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold cursor-pointer"
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold"
             >
               +
             </button>
             <button
-              onMouseDown={(e) => e.stopPropagation()}
               onClick={(e) => {
                 e.stopPropagation();
                 handleZoomChange(0.65);
               }}
-              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold ml-1 cursor-pointer"
+              className="px-2 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-xs font-bold ml-1"
             >
               Fit
             </button>
@@ -176,11 +165,10 @@ const ProjectCard = ({ item, isActive }) => {
                 e.stopPropagation();
                 toggleInteraction();
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                pointerEvents === 'auto' 
-                  ? 'bg-green-600/90 hover:bg-green-700 text-white' 
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${pointerEvents === 'auto'
+                  ? 'bg-green-600/90 hover:bg-green-700 text-white'
                   : 'bg-black/80 hover:bg-black/90 text-white'
-              }`}
+                }`}
             >
               {pointerEvents === 'auto' ? '🔓 Interactive' : '🔒 Click to Interact'}
             </button>
@@ -188,8 +176,8 @@ const ProjectCard = ({ item, isActive }) => {
 
           {/* Overlay when locked */}
           {pointerEvents === 'none' && (
-            <div 
-              className="absolute inset-0 z-5 bg-transparent cursor-pointer" 
+            <div
+              className="absolute inset-0 z-5 bg-transparent cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 toggleInteraction();
@@ -216,13 +204,13 @@ const ProjectCard = ({ item, isActive }) => {
             />
           </div>
         </div>
-        
+
         {/* RIGHT SIDE - PROJECT INFO */}
         <div className="lg:w-96 flex flex-col justify-center gap-4 text-white">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
             {item.title}
           </h1>
-          
+
           {/* Tech Stack Tags */}
           <div className="flex flex-wrap gap-2">
             {item.tags.map((tag, idx) => (
@@ -231,11 +219,11 @@ const ProjectCard = ({ item, isActive }) => {
               </span>
             ))}
           </div>
-          
+
           <p className="text-sm md:text-base leading-relaxed">
             {item.desc}
           </p>
-          
+
           <div className="flex flex-col gap-3 mt-2">
             {item.github && (
               <Link href={item.github} target="_blank" rel="noopener noreferrer">
@@ -246,17 +234,17 @@ const ProjectCard = ({ item, isActive }) => {
             )}
             <Link href={item.url} target="_blank" rel="noopener noreferrer">
               <button className="w-full px-4 py-3 text-sm bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
-                🚀 Open Full Site
+                🚀 Open Full {item.id === 2 ? 'Notebook' : 'Site'}
               </button>
             </Link>
           </div>
-          
+
           <div className="text-xs opacity-90 bg-white/10 p-3 rounded-lg mt-2">
-            <p className="font-semibold mb-1">⚠️ Important:</p>
-            <p>• Sites are LOCKED by default</p>
-            <p>• Click 🔒 button to unlock interaction</p>
-            <p>• LOCK 🔓 again before scrolling away</p>
-            <p>• This prevents navigation issues</p>
+            <p className="font-semibold mb-1">💡 Tips:</p>
+            <p>• Drag ⋮⋮ to move zoom controls</p>
+            <p>• Click 🔒 to unlock interaction</p>
+            <p>• Use +/− to zoom in/out</p>
+            <p>• Lock 🔓 before scrolling to next project</p>
           </div>
         </div>
       </div>
@@ -300,15 +288,16 @@ const PortfolioPage = () => {
           </motion.div>
         </div>
       </div>
-      
+
       <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
         <h1 className="text-8xl">Do you have a project?</h1>
-        <div className="relative">
+        <div className="relative inline-block">
           <motion.svg
             animate={{ rotate: 360 }}
             transition={{ duration: 8, ease: "linear", repeat: Infinity }}
             viewBox="0 0 300 300"
             className="w-64 h-64 md:w-[500px] md:h-[500px]"
+            style={{ pointerEvents: 'none' }}
           >
             <defs>
               <path
@@ -324,7 +313,8 @@ const PortfolioPage = () => {
           </motion.svg>
           <Link
             href="/contact"
-            className="w-16 h-16 md:w-28 md:h-28 absolute top-0 left-0 right-0 bottom-0 m-auto bg-black text-white rounded-full flex items-center justify-center"
+            className="w-16 h-16 md:w-28 md:h-28 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition cursor-pointer font-semibold text-xs md:text-base"
+            style={{ pointerEvents: 'auto' }}
           >
             Hire Me
           </Link>

@@ -20,8 +20,9 @@ const Homepage = () => {
         {/* Text */}
         <div className="h-1/2 flex flex-col gap-4 lg:gap-6 lg:w-1/2 lg:h-full items-center justify-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl md:text-5xl font-bold">
-              CS Master&apos;s Student & Software Engineer
+            <h1 className="text-3xl md:text-4xl font-bold">
+              CS Master&apos;s Student & <br />
+              Aspiring Software Engineer
             </h1>
             <p className="text-xs md:text-sm text-gray-600 mt-1">
               Northeastern University • Boston, MA • 4.0 GPA
@@ -29,9 +30,9 @@ const Homepage = () => {
           </div>
 
           <p className="text-sm md:text-base text-center lg:text-left">
-            Hi, I&apos;m Abhijith. I build scalable applications that bridge modern web
-            technologies with machine learning. Specializing in full-stack development
-            (React, Next.js, Node.js) and NLP.
+            Hi, I&apos;m Abhijith. I&apos;m a full-stack web developer passionate about creating
+            beautiful, functional websites. I love building scalable applications and solving
+            complex problems through clean code.
           </p>
 
           <div className="flex flex-wrap gap-1.5 text-xs justify-center lg:justify-start">

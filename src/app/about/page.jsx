@@ -35,10 +35,10 @@ const AboutPage = () => {
               specializing in full-stack development and machine learning applications.
             </p>
             <p className="text-sm">
-              My recent work includes building Kambaz, a full-featured learning management
-              system using Next.js and MongoDB, and developing NLP models for sentiment analysis
-              that achieved 95.4% accuracy. I&apos;m passionate about creating scalable applications
-              that bridge full-stack development with machine learning.
+              I enjoy working on challenging projects that solve real-world problems. My experience 
+              ranges from building full-stack web applications to exploring machine learning and 
+              natural language processing. I&apos;m always eager to learn new technologies and 
+              take on exciting challenges.
             </p>
             <div className="flex gap-2 flex-wrap">
               <a href="/resume.pdf" className="px-3 py-1.5 text-sm bg-black text-white rounded hover:bg-gray-800 transition">
@@ -66,50 +66,79 @@ const AboutPage = () => {
               className="grid grid-cols-1 sm:grid-cols-2 gap-3"
             >
               <div>
-                <div className="font-semibold text-sm mb-1">Frontend</div>
+                <div className="font-semibold text-sm mb-1">Languages</div>
                 <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">React.js</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Next.js</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Redux</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Tailwind</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JavaScript</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">TypeScript</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Python</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Java</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">C</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">SQL</span>
                 </div>
               </div>
 
               <div>
-                <div className="font-semibold text-sm mb-1">Backend</div>
+                <div className="font-semibold text-sm mb-1">Web Technologies</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">React</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Next.js</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">HTML5</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">CSS3</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Tailwind</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Bootstrap</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="font-semibold text-sm mb-1">Backend & APIs</div>
                 <div className="flex flex-wrap gap-1">
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Node.js</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Express.js</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">REST APIs</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">WebSockets</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="font-semibold text-sm mb-1">Databases</div>
+                <div className="flex flex-wrap gap-1">
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">MongoDB</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">PostgreSQL</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">MySQL</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Prisma</span>
                 </div>
               </div>
 
               <div>
-                <div className="font-semibold text-sm mb-1">Languages</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JavaScript/TypeScript</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Python</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Java</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="font-semibold text-sm mb-1">ML & AI</div>
+                <div className="font-semibold text-sm mb-1">Machine Learning</div>
                 <div className="flex flex-wrap gap-1">
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">TensorFlow</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">NLP</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">scikit-learn</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">NumPy</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Pandas</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">NLP</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Matplotlib</span>
                 </div>
               </div>
 
               <div>
-                <div className="font-semibold text-sm mb-1">Tools</div>
+                <div className="font-semibold text-sm mb-1">DevOps & Tools</div>
                 <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Git</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">AWS</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Vercel</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Git/GitHub</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Docker</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">AWS</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Linux</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">CI/CD</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Postman</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="font-semibold text-sm mb-1">Blockchain</div>
+                <div className="flex flex-wrap gap-1">
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Ethereum</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Solidity</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Web3</span>
                 </div>
               </div>
 
@@ -119,9 +148,20 @@ const AboutPage = () => {
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JUnit</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Jest</span>
                   <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JaCoCo</span>
+                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">PIT</span>
                 </div>
               </div>
             </motion.div>
+          </section>
+
+          {/* CERTIFICATIONS SECTION */}
+          <section className="pt-4">
+            <h2 className="font-bold text-xl mb-3">Certifications</h2>
+            <ul className="space-y-1 text-xs">
+              <li>📜 Meta Front-End Developer Professional Certificate</li>
+              <li>📜 Node.js – Master the Fundamentals</li>
+              <li>📜 Full-Stack Web Development (Udemy)</li>
+            </ul>
           </section>
 
           {/* FEATURED PROJECTS SECTION */}
@@ -142,7 +182,7 @@ const AboutPage = () => {
               <div className="border-l-4 border-black pl-3 py-2">
                 <div className="flex justify-between items-start">
                   <div className="font-semibold text-base">Kambaz LMS</div>
-                  <a href="https://github.com/abhi-2306/kambaz" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href="https://github.com/Abhi-2306/fa25-kambaz-next-js" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
                 <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
                   <li>Canvas-like LMS with course management, assignments, grading (Next.js, MongoDB)</li>
@@ -153,7 +193,7 @@ const AboutPage = () => {
               <div className="border-l-4 border-black pl-3 py-2">
                 <div className="flex justify-between items-start">
                   <div className="font-semibold text-base">Sentiment Analysis Model</div>
-                  <a href="https://github.com/abhi-2306/sentiment-analysis" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href="https://github.com/Abhi-2306/SentimentAnalysis" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
                 <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
                   <li>95.4% accuracy NLP model using TensorFlow and Word2Vec embeddings</li>
@@ -182,11 +222,11 @@ const AboutPage = () => {
               animate={isExperienceRefInView ? { x: 0 } : {}}
             >
               <div className="font-semibold text-base">Secretary & Lead Developer</div>
-              <div className="text-xs italic">Computer Society of India • Jan 2024 - Present</div>
+              <div className="text-xs italic">Computer Society of India • Jul 2023 - Oct 2024</div>
               <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
-                <li>Coordinate 17-member team managing platforms for 500+ students</li>
-                <li>Built full-stack apps using MERN for event management</li>
-                <li>Increased engagement 40% via automated notification systems</li>
+                <li>Coordinated 17-member technical team managing platforms for 500+ students</li>
+                <li>Built full-stack applications using MERN stack for event management</li>
+                <li>Increased engagement by 40% through automated notification systems</li>
               </ul>
             </motion.div>
           </section>
@@ -198,12 +238,14 @@ const AboutPage = () => {
               <div>
                 <div className="font-semibold text-sm">Northeastern University — MS Computer Science</div>
                 <div className="text-xs italic">Boston, MA • Sep 2025 - Jun 2027 • GPA: 4.0/4.0</div>
-                <div className="text-xs mt-0.5">Coursework: Algorithms, NLP</div>
+                <div className="text-xs mt-0.5">Coursework: Algorithms (CS 5800), Natural Language Processing (CS 6120),
+                  Program Design Paradigm (CS 5010), Web Development (CS 5610)
+                </div>
               </div>
 
               <div>
-                <div className="font-semibold text-sm">CVR College — B.Tech CSE</div>
-                <div className="text-xs italic">2021 - 2025 • GPA: 9.03/10.0</div>
+                <div className="font-semibold text-sm">CVR College of Engineering — B.Tech CSE</div>
+                <div className="text-xs italic">Hyderabad, India • 2021 - 2025 • GPA: 9.03/10.0</div>
               </div>
             </div>
           </section>
