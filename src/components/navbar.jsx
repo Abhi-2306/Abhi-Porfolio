@@ -150,13 +150,13 @@ const Navbar = () => {
                             variants={listItemVariants}
                             className="flex gap-6 mt-4"
                         >
-                            <Link href="https://github.com/abhi-2306" target="_blank">
+                            <Link href="https://github.com/abhi-2306" target="_blank" rel="noopener noreferrer">
                                 <Image src="/github-white.png" width={32} height={32} alt="GitHub" />
                             </Link>
-                            <Link href="https://www.linkedin.com/in/abhijith-pandiri-7a0350273/" target="_blank">
+                            <Link href="https://www.linkedin.com/in/abhijith-pandiri-7a0350273/" target="_blank" rel="noopener noreferrer">
                                 <Image src="/linkedin-white.png" width={32} height={32} alt="LinkedIn" />
                             </Link>
-                            <Link href="https://leetcode.com/Abhijith23/" target="_blank">
+                            <Link href="https://leetcode.com/Abhijith23/" target="_blank" rel="noopener noreferrer">
                                 <Image src="/leetcode-white.png" width={32} height={32} alt="LeetCode" />
                             </Link>
                         </motion.div>

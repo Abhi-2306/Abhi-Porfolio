@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+.claude
 .env
 # debug
 npm-debug.log*

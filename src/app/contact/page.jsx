@@ -66,7 +66,7 @@ const ContactPage = () => {
                         <div>
                             <h3 className="font-bold text-lg mb-2">Get in Touch</h3>
                             <p className="text-gray-600 text-sm mb-4">
-                                I&apos;m seeking Summer 2026 SWE internships. Let&apos;s connect!
+                                Open for Summer &amp; Fall 2026 SWE internship / co-op. Let&apos;s connect!
                             </p>
                         </div>
 

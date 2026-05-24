@@ -5,18 +5,26 @@ import TransitionProvider from "@/components/transitionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Abhijith Pandiri - Software Engineer & CS Graduate Student",
-  description: "First-year MS CS student at Northeastern University specializing in full-stack development and machine learning. Building scalable applications with React, Next.js, and Python. Seeking Summer 2026 software engineering internships.",
+  title: "Abhijith Pandiri - Software Engineer & MS CS Student",
+  description: "MS CS student at Northeastern University (GPA 4.0) specializing in full-stack development, backend systems, and AI/ML. Built production apps with Next.js, Python, and LLM integration. Seeking Summer & Fall 2026 SWE internship/co-op.",
   keywords: [
     "Abhijith Pandiri",
     "Software Engineer",
     "Full Stack Developer",
-    "Machine Learning",
     "Northeastern University",
     "React Developer",
     "Next.js",
-    "MERN Stack",
-    "NLP",
+    "TypeScript",
+    "FastAPI",
+    "Docker",
+    "AWS",
+    "AI Split",
+    "DocQuery",
+    "Kambaz LMS",
+    "LLM integration",
+    "RAG",
+    "HuggingFace",
+    "Supabase",
     "Computer Science"
   ],
   authors: [{ name: "Abhijith Pandiri" }],
@@ -25,12 +33,12 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://abhi-porfolio-zeta.vercel.app",
-    title: "Abhijith Pandiri - Software Engineer & CS Graduate Student",
-    description: "Full-stack developer and ML enthusiast at Northeastern University. Specializing in React, Next.js, and Python.",
+    title: "Abhijith Pandiri - Software Engineer & MS CS Student",
+    description: "MS CS student at Northeastern University (GPA 4.0) specializing in full-stack development, backend systems, and AI/ML. Built production apps with Next.js, Python, and LLM integration. Seeking Summer & Fall 2026 SWE internship/co-op.",
     siteName: "Abhijith Pandiri Portfolio",
     images: [
       {
-        url: "/og-image.png", // Add this image to your /public folder
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Abhijith Pandiri - Software Engineer",
@@ -40,7 +48,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Abhijith Pandiri - Software Engineer",
-    description: "Full-stack developer and ML enthusiast at Northeastern University",
+    description: "MS CS student at Northeastern University (GPA 4.0) specializing in full-stack development, backend systems, and AI/ML. Built production apps with Next.js, Python, and LLM integration. Seeking Summer & Fall 2026 SWE internship/co-op.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -57,7 +65,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={inter.className}>

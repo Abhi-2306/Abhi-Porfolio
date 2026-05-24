@@ -7,56 +7,74 @@ const items = [
   {
     id: 1,
     color: "from-purple-300 to-pink-300",
-    title: "Kambaz LMS",
-    desc: "Full-featured Canvas-like learning management system with course management, assignments, grading, and role-based access control. Built with Next.js, React, Redux Toolkit, and MongoDB.",
-    url: "https://fa25-kambaz-next-js-git-project-abhijiths-projects-7705a139.vercel.app/Account/Signin",
-    github: "https://github.com/Abhi-2306/fa25-kambaz-next-js",
-    tags: ["Next.js", "React", "Redux", "MongoDB"]
+    title: "AI Split",
+    desc: "Production fintech app with live users: Google OAuth, friends/debt graph, settle-up payments, group billing, bill templates, and PWA with offline support. AI Smart Split agent photographs a receipt → Groq LLaMA 4 Scout extracts line items → LLaMA 3.3 70B auto-allocates costs per person. Clean Architecture with 12 isolated use cases; all LLM output validated via Zod before any DB write; Vitest pipeline covers core financial logic end-to-end.",
+    url: "https://ai-split-theta.vercel.app",
+    github: "https://github.com/Abhi-2306/AI-SPLIT",
+    tags: ["Next.js", "TypeScript", "Groq LLaMA 4", "Supabase", "PostgreSQL", "Zod", "Vitest", "Tailwind CSS"]
   },
   {
     id: 2,
     color: "from-green-300 to-blue-300",
-    title: "NLP Sentiment Analyzer",
-    desc: "Machine learning model achieving 95.4% accuracy on sentiment classification. Built using Python, TensorFlow, and Word2Vec embeddings with comprehensive preprocessing pipeline.",
-    url: "https://nbviewer.org/github/Abhi-2306/SentimentAnalysis/blob/main/Sentiment_Analysis.ipynb",
-    github: "https://github.com/Abhi-2306/SentimentAnalysis",
-    tags: ["Python", "TensorFlow", "NLP", "ML"]
+    title: "Kambaz LMS",
+    desc: "Full-stack Canvas-like LMS supporting 500+ users, built for CS 5610 (received A/4.0). Features 30+ RESTful API endpoints for courses, assignments, enrollment, and grade management. Compound MongoDB indexes on highest-traffic query paths reduced latency by 60%. Dockerized, deployed to AWS, with CI/CD pipeline via GitHub Actions.",
+    url: "https://fa25-kambaz-next-js-git-project-abhijiths-projects-7705a139.vercel.app",
+    github: "https://github.com/Abhi-2306/fa25-kambaz-next-js",
+    tags: ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "Docker", "AWS", "GitHub Actions"]
   },
   {
     id: 3,
     color: "from-red-300 to-orange-300",
-    title: "Portfolio Website",
-    desc: "Personal portfolio built using Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth animations and interactive elements.",
-    url: "https://abhi-porfolio-zeta.vercel.app/",
-    github: "https://github.com/Abhi-2306/Abhi-Porfolio",
-    tags: ["Next.js", "Tailwind", "Framer Motion"]
+    title: "DocQuery",
+    desc: "End-to-end RAG-based document QA system: PDF ingestion → semantic chunking → vector index → fine-tuned DistilBERT. Fine-tuned DistilBERT on SQuAD 1.1 achieving 82.88% F1 / 97.30% BERTScore at 80ms latency. Evaluated on 5,000 SQuAD validation examples; FastAPI backend deployed on Render, frontend on Vercel.",
+    url: "https://github.com/Abhi-2306/docquery",
+    github: "https://github.com/Abhi-2306/docquery",
+    tags: ["Python", "FastAPI", "HuggingFace", "DistilBERT", "SentenceTransformer", "Next.js", "Tailwind CSS"]
   },
   {
     id: 4,
-    color: "from-blue-300 to-violet-300",
-    title: "Next.js Blog Platform",
-    desc: "Full-featured blogging platform with NextAuth authentication (credentials & GitHub), admin panel for user/post management, and bcryptjs password hashing.",
-    url: "https://blog-app-two-jade.vercel.app/",
-    github: "https://github.com/Abhi-2306/BlogApp",
-    tags: ["Next.js", "NextAuth", "MongoDB"]
+    color: "from-yellow-300 to-green-300",
+    title: "NLP Sentiment Analyzer",
+    desc: "Machine learning model achieving 95.4% accuracy on sentiment classification. Built using Python, TensorFlow, and Word2Vec embeddings with a comprehensive text preprocessing pipeline.",
+    url: "https://nbviewer.org/github/Abhi-2306/SentimentAnalysis/blob/main/Sentiment_Analysis.ipynb",
+    github: "https://github.com/Abhi-2306/SentimentAnalysis",
+    tags: ["Python", "TensorFlow", "NLP", "Word2Vec", "ML"]
   },
   {
     id: 5,
-    color: "from-violet-300 to-purple-300",
-    title: "E-Commerce Platform",
-    desc: "Full-stack e-commerce site with product filtering, cart functionality, and Stripe payments. Built with MERN stack, Redux Toolkit, JWT authentication, and admin panel.",
-    url: "https://mern-ecommerce-three-xi.vercel.app/",
-    github: "https://github.com/Abhi-2306/MERN-ECOMMERCE",
-    tags: ["MERN", "Redux", "Stripe", "JWT"]
+    color: "from-teal-300 to-cyan-300",
+    title: "Portfolio Website",
+    desc: "Personal portfolio built with Next.js for server-side rendering, Tailwind CSS for responsive design, and Framer Motion for smooth page transitions and animations.",
+    url: "https://abhi-porfolio-zeta.vercel.app/",
+    github: "https://github.com/Abhi-2306/Abhi-Porfolio",
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion"]
   },
   {
     id: 6,
-    color: "from-purple-300 to-red-300",
-    title: "Food Delivery App",
-    desc: "Food delivery platform with category browsing, search functionality, and cart features. Built using MERN stack with Bootstrap UI and bcrypt authentication.",
-    url: "https://tasty-terrain-full-stack.vercel.app/",
+    color: "from-orange-300 to-red-300",
+    title: "Next.js Blog Platform",
+    desc: "Full-featured blogging platform with NextAuth authentication (credentials & GitHub), an admin panel for user and post management, and bcryptjs password hashing.",
+    url: "https://blog-app-two-jade.vercel.app/",
+    github: "https://github.com/Abhi-2306/BlogApp",
+    tags: ["Next.js", "NextAuth", "MongoDB", "bcrypt"]
+  },
+  {
+    id: 7,
+    color: "from-blue-300 to-violet-300",
+    title: "MERN E-Commerce",
+    desc: "Full-stack e-commerce platform with product filtering by brand and category, price and rating sorting, shopping cart, Stripe payments, and an admin panel for product and order management.",
+    url: "https://mern-ecommerce-three-xi.vercel.app",
+    github: "https://github.com/Abhi-2306/MERN-ECOMMERCE",
+    tags: ["MongoDB", "Express.js", "React", "Node.js", "Redux Toolkit", "JWT", "Stripe"]
+  },
+  {
+    id: 8,
+    color: "from-violet-300 to-purple-300",
+    title: "TastyTerrain",
+    desc: "Food delivery app with category browsing, search, add-to-cart functionality, and secure authentication. Built with the MERN stack using Bootstrap for UI and bcrypt for password hashing.",
+    url: "https://tasty-terrain-full-stack.vercel.app",
     github: "https://github.com/Abhi-2306/TastyTerrain-Full_Stack",
-    tags: ["MERN", "Bootstrap", "bcrypt"]
+    tags: ["MongoDB", "Express.js", "React", "Node.js", "Bootstrap", "bcrypt"]
   },
 ];
 
@@ -234,7 +252,7 @@ const ProjectCard = ({ item, isActive }) => {
             )}
             <Link href={item.url} target="_blank" rel="noopener noreferrer">
               <button className="w-full px-4 py-3 text-sm bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
-                🚀 Open Full {item.id === 2 ? 'Notebook' : 'Site'}
+                🚀 Open Full Site
               </button>
             </Link>
           </div>
@@ -257,7 +275,7 @@ const PortfolioPage = () => {
   const [activeProject, setActiveProject] = useState(0);
 
   const { scrollYProgress } = useScroll({ target: ref });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85.7%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-88.9%"]);
 
   // Track which project is currently visible
   useEffect(() => {
@@ -275,7 +293,7 @@ const PortfolioPage = () => {
       animate={{ y: "0%" }}
       transition={{ duration: 1 }}
     >
-      <div className="h-[600vh] relative" ref={ref}>
+      <div className="h-[800vh] relative" ref={ref}>
         <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
           My Works
         </div>
@@ -291,34 +309,36 @@ const PortfolioPage = () => {
 
       <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
         <h1 className="text-8xl">Do you have a project?</h1>
-        <div className="relative inline-block">
-          <motion.svg
-            animate={{ rotate: 360 }}
-            transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-            viewBox="0 0 300 300"
-            className="w-64 h-64 md:w-[500px] md:h-[500px]"
-            style={{ pointerEvents: 'none' }}
-          >
-            <defs>
-              <path
-                id="circlePath"
-                d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0"
-              />
-            </defs>
-            <text fill="#000">
-              <textPath xlinkHref="#circlePath" className="text-xl">
-                Full Stack Web Developer - MERN
-              </textPath>
-            </text>
-          </motion.svg>
-          <Link
-            href="/contact"
-            className="w-16 h-16 md:w-28 md:h-28 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition cursor-pointer font-semibold text-xs md:text-base"
-            style={{ pointerEvents: 'auto' }}
-          >
-            Hire Me
-          </Link>
-        </div>
+        <motion.div
+          className="flex flex-col items-center gap-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <p className="text-sm text-gray-500 tracking-widest uppercase">
+            Open for Summer &amp; Fall 2026 Internship / Co-op
+          </p>
+          <div className="flex gap-4 flex-wrap justify-center">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                href="/contact"
+                className="px-8 py-4 bg-black text-white rounded-full font-semibold text-base hover:bg-gray-800 transition"
+              >
+                Let&apos;s Work Together
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 border-2 border-black rounded-full font-semibold text-base hover:bg-gray-100 transition"
+              >
+                View Resume
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );

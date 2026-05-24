@@ -30,18 +30,19 @@ const Homepage = () => {
           </div>
 
           <p className="text-sm md:text-base text-center lg:text-left">
-            Hi, I&apos;m Abhijith. I&apos;m a full-stack web developer passionate about creating
-            beautiful, functional websites. I love building scalable applications and solving
-            complex problems through clean code.
+            Hi, I&apos;m Abhijith. I build full-stack web applications and AI-powered systems —
+            from production fintech apps with LLM integrations to RAG-based document QA pipelines.
+            I love solving real-world problems through clean, scalable code.
           </p>
 
           <div className="flex flex-wrap gap-1.5 text-xs justify-center lg:justify-start">
             <span className="bg-black text-white px-2 py-1 rounded-full">React</span>
             <span className="bg-black text-white px-2 py-1 rounded-full">Next.js</span>
-            <span className="bg-black text-white px-2 py-1 rounded-full">Node.js</span>
-            <span className="bg-black text-white px-2 py-1 rounded-full">MongoDB</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">TypeScript</span>
             <span className="bg-black text-white px-2 py-1 rounded-full">Python</span>
-            <span className="bg-black text-white px-2 py-1 rounded-full">TensorFlow</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">PostgreSQL</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">FastAPI</span>
+            <span className="bg-black text-white px-2 py-1 rounded-full">Docker</span>
           </div>
 
           {/* Buttons */}
@@ -65,7 +66,7 @@ const Homepage = () => {
 
           <div className="text-xs text-gray-600 text-center lg:text-left">
             <p>📧 pandiri.a@northeastern.edu</p>
-            <p className="mt-0.5">🎯 Open for Summer 2026 Internships</p>
+            <p className="mt-0.5">🎯 Open for Summer &amp; Fall 2026 Internship / Co-op</p>
           </div>
         </div>
       </div>
