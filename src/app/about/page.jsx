@@ -1,266 +1,297 @@
 "use client";
-import Brain from "@/components/brain";
-import { motion, useInView, useScroll } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 
 const AboutPage = () => {
-  const containerRef = useRef();
-  const { scrollYProgress } = useScroll({ container: containerRef });
-
   const skillRef = useRef();
-  const isSkillRefInView = useInView(skillRef, { margin: "-100px" });
+  const isSkillRefInView = useInView(skillRef, { margin: "-100px", once: true });
 
   const projectRef = useRef();
-  const isProjectRefInView = useInView(projectRef, { margin: "-100px" });
+  const isProjectRefInView = useInView(projectRef, { margin: "-100px", once: true });
 
   const experienceRef = useRef();
-  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px" });
+  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px", once: true });
 
   return (
     <motion.div
-      className="h-full"
+      className="h-full overflow-y-auto"
       initial={{ y: "-200vh" }}
       animate={{ y: "0%" }}
       transition={{ duration: 1 }}
     >
-      <div className="h-full overflow-scroll lg:flex" ref={containerRef}>
-        <div className="p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20 flex flex-col gap-8 lg:w-2/3 xl:w-1/2">
-          {/* ABOUT ME SECTION */}
-          <section className="space-y-3">
-            <h1 className="font-bold text-2xl">About Me</h1>
-            <p className="text-sm">
-              I&apos;m an MS Computer Science student at Northeastern University&apos;s Khoury College
-              (4.0 GPA, graduating June 2027), focused on full-stack development, backend systems,
-              and AI/ML engineering.
-            </p>
-            <p className="text-sm">
-              I build production-ready applications — from fintech apps with LLM-powered receipt parsing
-              to RAG-based document QA systems with fine-tuned transformer models. I enjoy working across
-              the stack: React/Next.js frontends, FastAPI/Node.js backends, and PostgreSQL/Supabase data layers.
-              I&apos;m always looking for problems where clean engineering and AI can make a real difference.
-            </p>
-            <div className="flex gap-2 flex-wrap">
-              <a href="/resume.pdf" className="px-3 py-1.5 text-sm bg-black text-white rounded hover:bg-gray-800 transition">
-                Download Resume
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+        {/* HERO */}
+        <section className="mb-10">
+          <div className="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full mb-3">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse inline-block" />
+                Open to SWE Internship / Co-op — Summer &amp; Fall 2026
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">Abhijith Pandiri</h1>
+              <p className="text-gray-500 text-sm">
+                MS Computer Science @ Northeastern (4.0 GPA) · Full-Stack · AI/ML Engineering
+              </p>
+            </div>
+            <div className="flex gap-2 mt-2">
+              <a
+                href="/resume.pdf"
+                className="px-4 py-2 text-sm bg-black text-white rounded-lg hover:bg-gray-800 transition"
+              >
+                Resume
               </a>
-              <a href="/contact" className="px-3 py-1.5 text-sm border border-black rounded hover:bg-gray-100 transition">
-                Contact Me
+              <a
+                href="/contact"
+                className="px-4 py-2 text-sm border border-black rounded-lg hover:bg-gray-100 transition"
+              >
+                Contact
               </a>
             </div>
-          </section>
+          </div>
+          <p className="mt-4 text-gray-700 max-w-2xl text-sm leading-relaxed">
+            I build production-ready applications — from fintech apps with LLM-powered receipt parsing
+            to RAG-based document QA systems with fine-tuned transformer models. I work across the full
+            stack: React/Next.js frontends, FastAPI/Node.js backends, and PostgreSQL/Supabase data layers.
+          </p>
+        </section>
 
-          {/* TECHNICAL SKILLS SECTION */}
-          <section ref={skillRef} className="pt-4">
-            <motion.h2
-              initial={{ x: -200 }}
-              animate={isSkillRefInView ? { x: 0 } : {}}
-              className="font-bold text-xl mb-3"
-            >
-              Technical Skills
-            </motion.h2>
+        {/* BENTO GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-            <motion.div
-              initial={{ x: -200 }}
-              animate={isSkillRefInView ? { x: 0 } : {}}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3"
-            >
-              <div>
-                <div className="font-semibold text-sm mb-1">Languages</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Python</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">TypeScript</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JavaScript</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Java</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">C</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">C++</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">SQL</span>
+          {/* Skills — spans 2 cols */}
+          <motion.div
+            ref={skillRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isSkillRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <h2 className="font-bold text-lg mb-4">Technical Skills</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {[
+                {
+                  label: "Languages",
+                  items: ["Python", "TypeScript", "JavaScript", "Java", "C", "C++", "SQL"],
+                },
+                {
+                  label: "AI / ML",
+                  items: ["Groq API", "RAG Pipelines", "HuggingFace", "Fine-tuning", "scikit-learn", "PyTorch", "Prompt Engineering"],
+                },
+                {
+                  label: "Web & Backend",
+                  items: ["React", "Next.js", "FastAPI", "Node.js", "Express.js", "Redux", "RESTful APIs"],
+                },
+                {
+                  label: "Databases & Cloud",
+                  items: ["PostgreSQL", "MongoDB", "MySQL", "Supabase", "AWS"],
+                },
+                {
+                  label: "Tools & DevOps",
+                  items: ["Git", "Docker", "CI/CD", "Nginx", "PM2", "Turborepo", "Prisma", "Linux"],
+                },
+                {
+                  label: "Testing",
+                  items: ["Vitest", "Jest", "JUnit"],
+                },
+              ].map(({ label, items }) => (
+                <div key={label}>
+                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                    {label}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items.map((s) => (
+                      <span key={s} className="bg-gray-100 text-gray-800 text-xs px-2.5 py-1 rounded-full">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </motion.div>
 
-              <div>
-                <div className="font-semibold text-sm mb-1">AI / ML</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Groq API</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">RAG Pipelines</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">HuggingFace</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Fine-tuning</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">scikit-learn</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">PyTorch</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Prompt Engineering</span>
+          {/* Quick Stats — 1 col, dark */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isSkillRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-black text-white rounded-2xl p-6 flex flex-col gap-5"
+          >
+            <h2 className="font-bold text-lg">Quick Facts</h2>
+            <div className="space-y-4 flex-1">
+              {[
+                { value: "4.0", label: "GPA at Northeastern" },
+                { value: "8+", label: "Deployed projects" },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <div className="text-3xl font-bold">{value}</div>
+                  <div className="text-gray-400 text-xs">{label}</div>
                 </div>
-              </div>
+              ))}
+            </div>
+            <div className="text-xs text-gray-400">📍 Boston, MA</div>
+          </motion.div>
 
-              <div>
-                <div className="font-semibold text-sm mb-1">Web & Backend</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">React</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Next.js</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">FastAPI</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Node.js</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Express.js</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Redux</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">RESTful APIs</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="font-semibold text-sm mb-1">Databases & Cloud</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">PostgreSQL</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">MongoDB</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">MySQL</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Supabase</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">AWS</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="font-semibold text-sm mb-1">Tools & DevOps</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Git</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Docker</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">CI/CD</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Nginx</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">PM2</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Turborepo</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Prisma</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Linux</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="font-semibold text-sm mb-1">Testing</div>
-                <div className="flex flex-wrap gap-1">
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Vitest</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">Jest</span>
-                  <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full">JUnit</span>
-                </div>
-              </div>
-            </motion.div>
-          </section>
-
-          {/* CERTIFICATIONS SECTION */}
-          <section className="pt-4">
-            <h2 className="font-bold text-xl mb-3">Certifications</h2>
-            <ul className="space-y-1 text-xs">
-              <li>📜 Meta Front-End Developer Professional Certificate</li>
-              <li>📜 Node.js – Master the Fundamentals</li>
-              <li>📜 Full-Stack Web Development (Udemy)</li>
-            </ul>
-          </section>
-
-          {/* FEATURED PROJECTS SECTION */}
-          <section ref={projectRef} className="pt-4">
-            <motion.h2
-              initial={{ x: -200 }}
-              animate={isProjectRefInView ? { x: 0 } : {}}
-              className="font-bold text-xl mb-3"
-            >
-              Featured Projects
-            </motion.h2>
-
-            <motion.div
-              initial={{ x: -200 }}
-              animate={isProjectRefInView ? { x: 0 } : {}}
-              className="space-y-4"
-            >
-              <div className="border-l-4 border-black pl-3 py-2">
+          {/* Featured Projects — spans 2 cols */}
+          <motion.div
+            ref={projectRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isProjectRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="font-bold text-lg">Featured Projects</h2>
+              <Link href="/portfolio" className="text-xs text-gray-500 underline">
+                View all →
+              </Link>
+            </div>
+            <div className="space-y-5">
+              <div className="border-l-4 border-black pl-4">
                 <div className="flex justify-between items-start">
-                  <div className="font-semibold text-base">AI Split</div>
-                  <a href="https://github.com/Abhi-2306/AI-SPLIT" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <div className="font-semibold">AI Split</div>
+                  <a
+                    href="https://github.com/Abhi-2306/AI-SPLIT"
+                    className="text-xs text-gray-500 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
-                <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
+                <ul className="list-disc ml-4 mt-1.5 text-sm text-gray-600 space-y-1">
                   <li>Production fintech app with Google OAuth, debt graph, group billing, and PWA offline support</li>
                   <li>AI Smart Split: photograph a receipt → Groq LLaMA 4 Scout extracts items → LLaMA 3.3 70B auto-allocates costs</li>
                   <li>Clean Architecture with 12 use cases; all LLM output validated via Zod before any DB write</li>
                 </ul>
               </div>
-
-              <div className="border-l-4 border-black pl-3 py-2">
+              <div className="border-l-4 border-black pl-4">
                 <div className="flex justify-between items-start">
-                  <div className="font-semibold text-base">Kambaz LMS</div>
-                  <a href="https://github.com/Abhi-2306/fa25-kambaz-next-js" className="text-xs underline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <div className="font-semibold">Kambaz LMS</div>
+                  <a
+                    href="https://github.com/Abhi-2306/fa25-kambaz-next-js"
+                    className="text-xs text-gray-500 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
-                <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
+                <ul className="list-disc ml-4 mt-1.5 text-sm text-gray-600 space-y-1">
                   <li>Full-stack Canvas-like LMS supporting 500+ users with 30+ RESTful API endpoints</li>
                   <li>Compound MongoDB indexes reduced latency by 60%; Dockerized and deployed to AWS via GitHub Actions</li>
                 </ul>
               </div>
+            </div>
+          </motion.div>
 
-              <div className="text-xs mt-2">
-                <Link href="/portfolio" className="underline">View all 8 projects →</Link>
-              </div>
-            </motion.div>
-          </section>
-
-          {/* EXPERIENCE SECTION */}
-          <section ref={experienceRef} className="pt-4">
-            <motion.h2
-              initial={{ x: -200 }}
-              animate={isExperienceRefInView ? { x: 0 } : {}}
-              className="font-bold text-xl mb-3"
-            >
-              Experience
-            </motion.h2>
-
-            <motion.div
-              initial={{ x: -200 }}
-              animate={isExperienceRefInView ? { x: 0 } : {}}
-              className="space-y-4"
-            >
+          {/* Experience — 1 col */}
+          <motion.div
+            ref={experienceRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <h2 className="font-bold text-lg mb-4">Experience</h2>
+            <div className="space-y-5">
               <div>
-                <div className="font-semibold text-base">Teaching Assistant — DS 3000: Foundations of Data Science</div>
-                <div className="text-xs italic">Northeastern University • Summer 2026 – Present</div>
+                <div className="font-semibold text-sm">Teaching Assistant</div>
+                <div className="text-xs text-gray-500 italic">DS 3000: Foundations of Data Science</div>
+                <div className="text-xs text-gray-400">Northeastern · Summer 2026 – Present</div>
               </div>
-
               <div>
-                <div className="font-semibold text-base">Secretary & Lead Developer</div>
-                <div className="text-xs italic">Computer Society of India • Jul 2023 - Oct 2024</div>
-                <ul className="list-disc ml-4 mt-1 text-xs space-y-0.5">
-                  <li>Coordinated 17-member technical team managing platforms for 500+ students</li>
-                  <li>Built full-stack applications using MERN stack for event management</li>
-                  <li>Increased engagement by 40% through automated notification systems</li>
+                <div className="font-semibold text-sm">Secretary & Lead Developer</div>
+                <div className="text-xs text-gray-500 italic">Computer Society of India</div>
+                <div className="text-xs text-gray-400">Jul 2023 – Oct 2024</div>
+                <ul className="list-disc ml-4 mt-1.5 text-xs text-gray-600 space-y-1">
+                  <li>17-member team managing platforms for 500+ students</li>
+                  <li>MERN stack event management apps</li>
+                  <li>40% engagement increase via automation</li>
                 </ul>
               </div>
-            </motion.div>
-          </section>
+            </div>
+          </motion.div>
 
-          {/* EDUCATION SECTION */}
-          <section className="pt-4">
-            <h2 className="font-bold text-xl mb-3">Education</h2>
-            <div className="space-y-2">
-              <div>
-                <div className="font-semibold text-sm">Northeastern University — MS Computer Science</div>
-                <div className="text-xs italic">Khoury College • Boston, MA • Aug 2025 – Jun 2027 • GPA: 4.0/4.0</div>
-                <div className="text-xs mt-0.5">Coursework: Algorithms (CS 5800), Natural Language Processing (CS 6120),
-                  Program Design Paradigm (CS 5010), Web Development (CS 5610)
+          {/* Education — spans 2 cols */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <h2 className="font-bold text-lg mb-4">Education</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-gray-50 rounded-xl p-4">
+                <div className="font-semibold text-sm">Northeastern University</div>
+                <div className="text-xs text-gray-500">MS Computer Science · Khoury College</div>
+                <div className="text-xs text-gray-400 mt-0.5">Boston, MA · Aug 2025 – Jun 2027 · GPA: 4.0/4.0</div>
+                <div className="text-xs text-gray-500 mt-2">
+                  Algorithms (CS 5800), NLP (CS 6120), Web Dev (CS 5610), Program Design (CS 5010)
                 </div>
               </div>
-
-              <div>
-                <div className="font-semibold text-sm">CVR College of Engineering — B.Tech Computer Science & Engineering</div>
-                <div className="text-xs italic">Hyderabad, India • 2021 – 2025 • GPA: 8.9/10</div>
+              <div className="bg-gray-50 rounded-xl p-4">
+                <div className="font-semibold text-sm">CVR College of Engineering</div>
+                <div className="text-xs text-gray-500">B.Tech Computer Science & Engineering</div>
+                <div className="text-xs text-gray-400 mt-0.5">Hyderabad, India · 2021 – 2025 · GPA: 8.9/10</div>
               </div>
             </div>
-          </section>
+          </motion.div>
 
-          {/* WHAT I'M LOOKING FOR SECTION */}
-          <section className="pt-4 pb-24">
-            <h2 className="font-bold text-xl mb-2">What I&apos;m Looking For</h2>
-            <p className="text-xs mb-2">Summer &amp; Fall 2026 SWE internship / co-op where I can:</p>
-            <ul className="list-none space-y-1 ml-2 text-xs">
-              <li>✓ Build production systems with React/Next.js/FastAPI/Node.js</li>
-              <li>✓ Apply AI/ML and LLM integration to solve real problems</li>
-              <li>✓ Work on data engineering and backend systems at scale</li>
-              <li>✓ Collaborate with talented engineering teams</li>
+          {/* Certifications — 1 col */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <h2 className="font-bold text-lg mb-4">Certifications</h2>
+            <ul className="space-y-3 text-sm text-gray-700">
+              <li className="flex items-start gap-2">
+                <span>📜</span>
+                <span>Meta Front-End Developer Professional Certificate</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span>📜</span>
+                <span>Node.js – Master the Fundamentals</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span>📜</span>
+                <span>Full-Stack Web Development (Udemy)</span>
+              </li>
             </ul>
-            <p className="text-xs mt-3">📧 pandiri.a@northeastern.edu | 📍 Boston, MA</p>
-          </section>
-        </div>
+          </motion.div>
 
-        <div className="hidden lg:block w-1/3 sticky top-0 z-30 xl:w-1/2">
-          <Brain scrollYProgress={scrollYProgress} />
+          {/* What I'm Looking For — full width, dark */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-3 bg-black text-white rounded-2xl p-6 mb-8"
+          >
+            <h2 className="font-bold text-lg mb-2">What I&apos;m Looking For</h2>
+            <p className="text-gray-400 text-sm mb-4">
+              Summer &amp; Fall 2026 SWE internship / co-op where I can:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {[
+                "Build production systems with React / Next.js / FastAPI / Node.js",
+                "Apply AI/ML and LLM integration to solve real problems",
+                "Work on data engineering and backend systems at scale",
+                "Collaborate with talented engineering teams",
+              ].map((item) => (
+                <div key={item} className="bg-white/10 rounded-xl p-3 text-sm">
+                  ✓ {item}
+                </div>
+              ))}
+            </div>
+            <p className="text-gray-400 text-xs mt-4">
+              📧 pandiri.a@northeastern.edu · 📍 Boston, MA
+            </p>
+          </motion.div>
+
         </div>
       </div>
     </motion.div>
