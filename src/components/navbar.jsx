@@ -151,13 +151,13 @@ const Navbar = () => {
                             className="flex gap-6 mt-4"
                         >
                             <Link href="https://github.com/abhi-2306" target="_blank" rel="noopener noreferrer">
-                                <Image src="/github-white.png" width={32} height={32} alt="GitHub" />
+                                <Image src="/github.png" width={32} height={32} alt="GitHub" className="brightness-0 invert" />
                             </Link>
                             <Link href="https://www.linkedin.com/in/abhijith-pandiri-7a0350273/" target="_blank" rel="noopener noreferrer">
-                                <Image src="/linkedin-white.png" width={32} height={32} alt="LinkedIn" />
+                                <Image src="/linkedin.png" width={32} height={32} alt="LinkedIn" className="brightness-0 invert" />
                             </Link>
                             <Link href="https://leetcode.com/Abhijith23/" target="_blank" rel="noopener noreferrer">
-                                <Image src="/leetcode-white.png" width={32} height={32} alt="LeetCode" />
+                                <Image src="/leetcode.png" width={32} height={32} alt="LeetCode" className="brightness-0 invert" />
                             </Link>
                         </motion.div>
                     </motion.div>
