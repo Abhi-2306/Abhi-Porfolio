@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { availability, projects } from "@/data/content";
 
@@ -123,17 +124,32 @@ const ProjectCard = ({ item, isActive }) => {
   const handleDragEnd = () => setIsDragging(false);
 
   return (
-    <div className={`min-h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} px-8 py-6`}>
-      <div className="flex flex-col lg:flex-row gap-6 w-full h-[85vh] max-w-7xl">
-        {/* LEFT — LIVE WEBSITE */}
-        <div className="flex-1 bg-white rounded-lg shadow-2xl overflow-hidden border-4 border-white/30 relative">
-          {/* Draggable Zoom Controls */}
+    <div className={`min-h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} px-4 sm:px-8 py-4 lg:py-6`}>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full h-[88vh] lg:h-[85vh] max-w-7xl">
+        {/* LEFT: live website, or a GitHub card when the link can't be embedded */}
+        <div className="h-[25vh] sm:h-[40vh] lg:h-auto shrink-0 lg:shrink lg:flex-1 bg-white rounded-lg shadow-2xl overflow-hidden border-4 border-white/30 relative">
+          {item.githubOnly ? (
+            <a
+              href={item.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-full flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 text-center bg-gray-50 hover:bg-gray-100 transition"
+            >
+              <Image src="/github.png" width={48} height={48} alt="" className="w-8 h-8 sm:w-12 sm:h-12" />
+              <span className="font-semibold text-gray-800 text-sm sm:text-base break-all">
+                {item.github.replace("https://github.com/", "")}
+              </span>
+              <span className="text-xs text-gray-500">Live preview not available. View the source on GitHub ↗</span>
+            </a>
+          ) : (
+          <>
+          {/* Draggable Zoom Controls (hidden on phones, where they cover the toggle) */}
           <div
             draggable
             onDragStart={handleDragStart}
             onDrag={handleDrag}
             onDragEnd={handleDragEnd}
-            className="absolute z-10 flex gap-2 bg-black/80 rounded-lg p-2 cursor-move select-none"
+            className="absolute z-10 hidden sm:flex gap-2 bg-black/80 rounded-lg p-2 cursor-move select-none"
             style={{
               top: controlsPosition.y ? `${controlsPosition.y}px` : "12px",
               left: controlsPosition.x ? `${controlsPosition.x}px` : "auto",
@@ -197,10 +213,13 @@ const ProjectCard = ({ item, isActive }) => {
               }}
             />
           </div>
+          </>
+          )}
         </div>
 
-        {/* RIGHT — PROJECT INFO */}
-        <div className="lg:w-96 flex flex-col justify-center gap-4 text-white">
+        {/* RIGHT: project info (scrolls on very short screens instead of clipping) */}
+        <div className="lg:w-96 flex-1 lg:flex-none min-h-0 overflow-y-auto flex flex-col text-white">
+          <div className="sm:my-auto flex flex-col gap-3 lg:gap-4">
           <div className="flex items-start gap-3 flex-wrap">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
               {item.title}
@@ -214,7 +233,7 @@ const ProjectCard = ({ item, isActive }) => {
 
           <div className="flex flex-wrap gap-2">
             {item.tags.map((tag, idx) => (
-              <span key={idx} className="bg-white/30 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium">
+              <span key={idx} className="bg-white/30 backdrop-blur-sm px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium">
                 {tag}
               </span>
             ))}
@@ -222,29 +241,31 @@ const ProjectCard = ({ item, isActive }) => {
 
           <p className="text-sm md:text-base leading-relaxed">{item.desc}</p>
 
-          <div className="flex flex-col gap-3 mt-2">
+          <div className="flex flex-col gap-2 lg:gap-3 mt-1 lg:mt-2">
             {item.github && (
               <Link href={item.github} target="_blank" rel="noopener noreferrer">
-                <button className="w-full px-4 py-3 text-sm bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition shadow-lg">
+                <button className="w-full px-4 py-2.5 lg:py-3 text-sm bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition shadow-lg">
                   📂 View Code on GitHub
                 </button>
               </Link>
             )}
             {!item.githubOnly && (
               <Link href={item.url} target="_blank" rel="noopener noreferrer">
-                <button className="w-full px-4 py-3 text-sm bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
+                <button className="w-full px-4 py-2.5 lg:py-3 text-sm bg-white text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
                   🚀 Open Full Site
                 </button>
               </Link>
             )}
           </div>
 
-          <div className="text-xs opacity-90 bg-white/10 p-3 rounded-lg mt-2">
+          {/* Tips only apply to mouse users with the live preview */}
+          <div className={`${item.githubOnly ? "hidden" : "hidden lg:block"} text-xs opacity-90 bg-white/10 p-3 rounded-lg mt-2`}>
             <p className="font-semibold mb-1">💡 Tips:</p>
             <p>• Drag ⋮⋮ to move zoom controls</p>
             <p>• Click 🔒 to unlock interaction</p>
             <p>• Use +/− to zoom in/out</p>
             <p>• Lock 🔓 before scrolling to next project</p>
+          </div>
           </div>
         </div>
       </div>
@@ -276,7 +297,7 @@ export default function PortfolioClient() {
     >
       <div className="h-[1000vh] relative" ref={ref}>
         <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
-          <h1 className="text-8xl font-light">My Works</h1>
+          <h1 className="text-6xl sm:text-8xl font-light">My Works</h1>
         </div>
         <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
           <motion.div style={{ x }} className="flex">
@@ -288,8 +309,8 @@ export default function PortfolioClient() {
         </div>
       </div>
 
-      <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
-        <h2 className="text-8xl">Do you have a project?</h2>
+      <div className="w-screen h-screen flex flex-col gap-10 md:gap-16 items-center justify-center text-center px-4">
+        <h2 className="text-5xl sm:text-7xl md:text-8xl">Do you have a project?</h2>
         <motion.div
           className="flex flex-col items-center gap-6"
           initial={{ opacity: 0, y: 40 }}
@@ -303,7 +324,7 @@ export default function PortfolioClient() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="/contact"
-                className="px-8 py-4 bg-black text-white rounded-full font-semibold text-base hover:bg-gray-800 transition"
+                className="inline-block px-8 py-4 bg-black text-white rounded-full font-semibold text-base hover:bg-gray-800 transition"
               >
                 Let&apos;s Work Together
               </Link>
@@ -313,7 +334,7 @@ export default function PortfolioClient() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 border-2 border-black rounded-full font-semibold text-base hover:bg-gray-100 transition"
+                className="inline-block px-8 py-4 border-2 border-black rounded-full font-semibold text-base hover:bg-gray-100 transition"
               >
                 View Resume
               </a>

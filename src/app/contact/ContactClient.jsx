@@ -36,12 +36,12 @@ export default function ContactClient() {
 
     return (
         <motion.div
-            className="h-full"
+            className="h-full overflow-y-auto"
             initial={{ y: "-200vh" }}
             animate={{ y: "0%" }}
             transition={{ duration: 1 }}
         >
-            <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-4">
+            <div className="min-h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-4 pb-6">
                 {/* TEXT CONTAINER */}
                 <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-2">
                     <div className="text-3xl md:text-4xl mb-4">
@@ -85,7 +85,7 @@ export default function ContactClient() {
 
                             <div className="flex items-center gap-2 justify-center lg:justify-start">
                                 <span className="font-semibold">🎓</span>
-                                <span>Northeastern University · MS CS · Graduating December 2027</span>
+                                <span>Northeastern University, Boston · MS CS · Graduating December 2027</span>
                             </div>
                         </div>
 

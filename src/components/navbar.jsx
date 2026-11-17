@@ -70,7 +70,7 @@ const Navbar = () => {
 
     return (
         <div className='h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl'>
-            <div className='hidden md:flex gap-8 w-1/3 items-center'>
+            <div className='hidden md:flex gap-4 lg:gap-8 items-center text-lg lg:text-xl'>
                 {links.map((link) => (
                     <NavLink key={link.title} link={link} />
                 ))}
@@ -88,7 +88,7 @@ const Navbar = () => {
                 </Link>
             </div> */}
 
-            <div className='hidden md:flex gap-4 w-1/3 justify-end items-center'>
+            <div className='hidden md:flex gap-4 justify-end items-center shrink-0'>
                 <Link href="https://github.com/abhi-2306" target="_blank" rel="noopener noreferrer">
                     <Image src="/github.png" width={24} height={24} alt="GitHub" className="hover:opacity-70 transition" />
                 </Link>

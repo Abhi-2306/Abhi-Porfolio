@@ -50,7 +50,7 @@ const websiteSchema = {
   name: "Abhijith Pandiri Portfolio",
   url: BASE,
   description:
-    "Portfolio of Abhijith Pandiri, Full-Stack & Applied AI Engineer, MS CS at Northeastern University.",
+    "Portfolio of Abhijith Pandiri, Full-Stack & Applied AI Engineer, MS CS at Northeastern University, Boston.",
 };
 
 const toApp = (p, applicationCategory) => ({

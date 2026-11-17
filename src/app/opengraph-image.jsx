@@ -47,7 +47,7 @@ export default function OgImage() {
               color: "#777777",
             }}
           >
-            MS Computer Science @ Northeastern · 4.0 GPA
+            MS Computer Science @ Northeastern, Boston · 4.0 GPA
           </div>
           <div
             style={{

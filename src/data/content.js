@@ -5,16 +5,16 @@ export const availability =
   "Open to Summer 2027 internships and full-time new-grad roles in 2027.";
 
 export const metaDescription =
-  "Abhijith, MS CS at Northeastern. Full-Stack & Applied AI Engineer. Software Engineer Intern at Badge Six and Research Assistant with Prof. Gilbert Nyaga.";
+  "Abhijith, MS CS at Northeastern, Boston. Full-Stack & Applied AI Engineer. Software Engineer Intern at Badge Six and Research Assistant with Prof. Gilbert Nyaga.";
 
 export const hero = {
   name: "Abhijith",
-  title: "Full-Stack & Applied AI Engineer | MS CS @ Northeastern",
+  title: "Full-Stack & Applied AI Engineer | MS CS @ Northeastern, Boston",
   subtitle: "Software Engineer Intern at Badge Six · Research Assistant with Prof. Gilbert Nyaga",
 };
 
 export const about =
-  "I'm an MS Computer Science student at Northeastern's Khoury College (4.0 GPA) who builds full-stack and applied AI systems. I'm currently a Software Engineer Intern at Badge Six, a GovTech compliance platform for law enforcement, where I ship features and fix production issues across React, NestJS, MongoDB, and AWS, and I built an agentic Claude Code workflow that automates investigation, review, and browser testing. I'm also a Research Assistant with Prof. Gilbert Nyaga, analyzing how ownership affects nursing home quality using CMS data. I like owning problems end to end, from debugging production systems to designing pipelines that hold up under real data.";
+  "I'm an MS Computer Science student at Northeastern's Khoury College in Boston (4.0 GPA) who builds full-stack and applied AI systems. I'm currently a Software Engineer Intern at Badge Six, a GovTech compliance platform for law enforcement, where I ship features and fix production issues across React, NestJS, MongoDB, and AWS, and I built an agentic Claude Code workflow that automates investigation, review, and browser testing. I'm also a Research Assistant with Prof. Gilbert Nyaga, analyzing how ownership affects nursing home quality using CMS data. I like owning problems end to end, from debugging production systems to designing pipelines that hold up under real data.";
 
 export const experience = [
   {
@@ -149,7 +149,7 @@ export const faq = [
   },
   {
     q: "What is Abhijith's academic background?",
-    a: "MS Computer Science at Northeastern University (4.0 GPA, graduating December 2027). Previously B.Tech Computer Science at CVR College of Engineering (GPA: 8.9/10).",
+    a: "MS Computer Science at Northeastern University, Boston (4.0 GPA, graduating December 2027). Previously B.Tech Computer Science at CVR College of Engineering (GPA: 8.9/10).",
   },
   {
     q: "Has Abhijith won any hackathons?",

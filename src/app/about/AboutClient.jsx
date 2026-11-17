@@ -177,7 +177,7 @@ export default function AboutClient() {
             <h2 className="font-bold text-lg">Quick Facts</h2>
             <div className="space-y-4 flex-1">
               {[
-                { value: "4.0", label: "GPA at Northeastern" },
+                { value: "4.0", label: "GPA at Northeastern, Boston" },
                 { value: "8+", label: "Deployed projects" },
               ].map(({ value, label }) => (
                 <div key={label}>

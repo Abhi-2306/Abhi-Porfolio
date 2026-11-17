@@ -4,3 +4,8 @@
 html {
     font-size: 18px;
 }
+
+/* w-screen (100vw) includes the scrollbar on Windows desktop browsers; stop it causing sideways scroll */
+body {
+    overflow-x: hidden;
+}
