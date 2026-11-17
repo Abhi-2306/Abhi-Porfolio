@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Abhijith Pandiri — Full-Stack & AI Engineer";
+export const alt = "Abhijith Pandiri | Full-Stack & Applied AI Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -39,7 +39,7 @@ export default function OgImage() {
               letterSpacing: "0.5px",
             }}
           >
-            Full-Stack &amp; AI Engineer
+            Full-Stack &amp; Applied AI Engineer
           </div>
           <div
             style={{

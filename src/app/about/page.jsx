@@ -1,13 +1,12 @@
 import AboutClient from "./AboutClient";
+import { availability, metaDescription } from "@/data/content";
 
 export const metadata = {
   title: "About",
-  description:
-    "Learn about Abhijith Pandiri — Full-Stack & AI Engineer, MS CS at Northeastern University (4.0 GPA). Skills, projects, experience, education, and availability for Summer/Fall 2026 internships.",
+  description: `${metaDescription} Skills, projects, experience, and education. ${availability}`,
   openGraph: {
     title: "About | Abhijith Pandiri",
-    description:
-      "Full-Stack & AI Engineer. MS CS at Northeastern (4.0 GPA). Open to Summer/Fall 2026 internships. F-1 (CPT/OPT eligible).",
+    description: metaDescription,
   },
 };
 

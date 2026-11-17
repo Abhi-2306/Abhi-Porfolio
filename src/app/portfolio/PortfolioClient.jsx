@@ -2,30 +2,23 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
+import { availability, projects } from "@/data/content";
+
+const fromContent = (p, id, color) => ({
+  id,
+  color,
+  title: p.title,
+  badge: null,
+  desc: p.desc,
+  url: p.demo || p.github,
+  github: p.github,
+  githubOnly: !p.demo,
+  tags: p.stack,
+});
 
 const items = [
-  {
-    id: 1,
-    color: "from-purple-300 to-pink-300",
-    title: "AI Split",
-    badge: null,
-    desc: "Production fintech PWA with live users: Google OAuth, friends/debt graph, settle-up payments, group billing, bill templates, and PWA with offline support. AI Smart Split agent photographs a receipt → Groq LLaMA 4 Scout extracts line items → LLaMA 3.3 70B auto-allocates costs per person. 95%+ receipt line-item parsing accuracy. Clean Architecture with 12 isolated use cases; all LLM output validated via Zod.",
-    url: "https://ai-split-theta.vercel.app",
-    github: "https://github.com/Abhi-2306/AI-SPLIT",
-    githubOnly: false,
-    tags: ["Next.js", "TypeScript", "Groq LLaMA 4", "Supabase", "PostgreSQL", "Zod", "Vitest", "Tailwind CSS"],
-  },
-  {
-    id: 2,
-    color: "from-indigo-300 to-blue-300",
-    title: "MCP Finance Server",
-    badge: null,
-    desc: "Model Context Protocol server exposing 6 financial-data tools to LLM clients like Claude Desktop over stdio transport. Layered provider architecture with caching and retry/backoff resilience. 30 unit tests and an 18-case eval harness ensure reliability across market data, quotes, and economic indicators.",
-    url: "https://github.com/Abhi-2306/fin-mcp",
-    github: "https://github.com/Abhi-2306/fin-mcp",
-    githubOnly: true,
-    tags: ["TypeScript", "Model Context Protocol", "Bun", "Zod", "Alpha Vantage API"],
-  },
+  fromContent(projects.aiSplit, 1, "from-purple-300 to-pink-300"),
+  fromContent(projects.financeAssistant, 2, "from-indigo-300 to-blue-300"),
   {
     id: 3,
     color: "from-yellow-300 to-orange-300",
@@ -37,28 +30,8 @@ const items = [
     githubOnly: true,
     tags: ["Python", "LLMs", "Multi-Agent", "W&B Weave"],
   },
-  {
-    id: 4,
-    color: "from-red-300 to-orange-300",
-    title: "DocQuery",
-    badge: null,
-    desc: "End-to-end RAG-based document QA system: PDF ingestion → semantic chunking → vector index → fine-tuned DistilBERT on SQuAD 1.1. Achieves 82.88% F1 and 97.30% BERTScore at 80ms latency. Evaluated on 5,000 SQuAD validation examples. FastAPI backend on Render, frontend on Vercel.",
-    url: "https://github.com/Abhi-2306/docquery",
-    github: "https://github.com/Abhi-2306/docquery",
-    githubOnly: true,
-    tags: ["Python", "FastAPI", "HuggingFace", "DistilBERT", "SentenceTransformer", "Next.js"],
-  },
-  {
-    id: 5,
-    color: "from-green-300 to-blue-300",
-    title: "Kambaz LMS",
-    badge: null,
-    desc: "Full-stack Canvas-like LMS with 30+ RESTful API endpoints for courses, assignments, enrollment, and grade management. Compound MongoDB indexes on highest-traffic query paths cut latency by 60%. Dockerized and deployed to AWS with CI/CD via GitHub Actions.",
-    url: "https://fa25-kambaz-next-js-git-project-abhijiths-projects-7705a139.vercel.app",
-    github: "https://github.com/Abhi-2306/fa25-kambaz-next-js",
-    githubOnly: false,
-    tags: ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "Docker", "AWS"],
-  },
+  fromContent(projects.docQuery, 4, "from-red-300 to-orange-300"),
+  fromContent(projects.kambaz, 5, "from-green-300 to-blue-300"),
   {
     id: 6,
     color: "from-yellow-300 to-green-300",
@@ -324,7 +297,7 @@ export default function PortfolioClient() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p className="text-sm text-gray-500 tracking-widest uppercase">
-            Open to Summer/Fall 2026 Internships &amp; Spring/Summer 2027 Co-op
+            {availability}
           </p>
           <div className="flex gap-4 flex-wrap justify-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>

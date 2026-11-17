@@ -2,16 +2,47 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import {
+  about,
+  availability,
+  award,
+  education,
+  experience,
+  faq,
+  hero,
+  leadership,
+  projects,
+  skills,
+} from "@/data/content";
+
+const FEATURED_PROJECTS = [
+  projects.aiSplit,
+  projects.financeAssistant,
+  {
+    title: "Trust Agentic Commerce",
+    github: "https://github.com/ColeLeng/trust-agentic-commerce",
+    badge: "🏆 1st / 80+ teams",
+    bullets: [
+      "Multi-agent security system with 4 isolated security sub-agents and structured verdict aggregation",
+      "Built with Python, LLMs, and W&B Weave observability · SundAI × W&B Hackathon at MIT, May 2026",
+    ],
+  },
+  projects.docQuery,
+  projects.kambaz,
+];
 
 export default function AboutClient() {
+  const experienceRef = useRef();
+  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px", once: true });
+
   const skillRef = useRef();
   const isSkillRefInView = useInView(skillRef, { margin: "-100px", once: true });
 
   const projectRef = useRef();
   const isProjectRefInView = useInView(projectRef, { margin: "-100px", once: true });
 
-  const experienceRef = useRef();
-  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px", once: true });
+  const educationRef = useRef();
+  const isEducationRefInView = useInView(educationRef, { margin: "-100px", once: true });
 
   const faqRef = useRef();
   const isFaqRefInView = useInView(faqRef, { margin: "-100px", once: true });
@@ -31,12 +62,11 @@ export default function AboutClient() {
             <div>
               <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs px-3 py-1 rounded-full mb-3">
                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse inline-block" />
-                Open to Summer/Fall 2026 Internships &amp; Spring/Summer 2027 Co-op · F-1 (CPT/OPT eligible)
+                {availability}
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">Abhijith Pandiri</h1>
-              <p className="text-gray-500 text-sm">
-                Full-Stack &amp; AI Engineer · MS Computer Science @ Northeastern (4.0 GPA)
-              </p>
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">{hero.name}</h1>
+              <p className="text-gray-500 text-sm">{hero.title}</p>
+              <p className="text-gray-500 text-sm">{hero.subtitle}</p>
             </div>
             <div className="flex gap-2 mt-2">
               <a
@@ -53,20 +83,16 @@ export default function AboutClient() {
               </Link>
             </div>
           </div>
-          <p className="mt-4 text-gray-700 max-w-2xl text-sm leading-relaxed">
-            I build production-ready applications — from fintech apps with LLM-powered receipt parsing
-            to RAG-based document QA systems with fine-tuned transformer models. I work across the full
-            stack: React/Next.js frontends, FastAPI/Node.js backends, and PostgreSQL/Supabase data layers.
-          </p>
+          <p className="mt-4 text-gray-700 max-w-2xl text-sm leading-relaxed">{about}</p>
         </section>
 
         {/* BENTO GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-          {/* HACKATHON WIN — full width, first card */}
+          {/* AWARD: full width, first card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={isSkillRefInView ? { opacity: 1, y: 0 } : {}}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="lg:col-span-3 bg-black text-white rounded-2xl p-6"
           >
@@ -74,24 +100,47 @@ export default function AboutClient() {
               <div className="text-5xl shrink-0">🏆</div>
               <div>
                 <div className="text-xs text-yellow-400 uppercase tracking-widest mb-1 font-semibold">
-                  Hackathon Win · May 2026
+                  Hackathon Win · {award.date}
                 </div>
-                <div className="text-xl font-bold leading-snug">
-                  1st Place / 80+ Teams — SundAI × W&B Multi-Agent Hackathon
-                </div>
-                <div className="text-gray-300 text-sm mt-1">
-                  The Engine at MIT · Boston Tech Week · May 2026
-                </div>
-                <div className="text-gray-400 text-xs mt-2 max-w-2xl">
-                  Built <span className="text-white font-medium">Trust Agentic Commerce</span> — a
-                  multi-agent security system with 4 isolated security sub-agents and structured verdict
-                  aggregation, using Python, LLMs, and W&B Weave observability.
-                </div>
+                <div className="text-xl font-bold leading-snug">{award.title}</div>
+                <div className="text-gray-400 text-xs mt-2 max-w-2xl">{award.desc}</div>
               </div>
             </div>
           </motion.div>
 
-          {/* Skills — spans 2 cols */}
+          {/* Experience: full width */}
+          <motion.div
+            ref={experienceRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="md:col-span-2 lg:col-span-3 bg-white border border-gray-200 rounded-2xl p-6"
+          >
+            <h2 className="font-bold text-lg mb-4">Experience</h2>
+            <div className="grid lg:grid-cols-3 gap-4">
+              {experience.map((job) => (
+                <div key={`${job.role}-${job.org}`} className="bg-gray-50 rounded-xl p-4">
+                  <div className="font-semibold text-sm">{job.role}</div>
+                  <div className="text-xs text-gray-500 italic">{job.org}</div>
+                  <div className="text-xs text-gray-400">
+                    {job.location} · {job.dates}
+                  </div>
+                  {job.tech && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      <span className="font-semibold">Tech:</span> {job.tech}
+                    </div>
+                  )}
+                  <ul className="list-disc ml-4 mt-2 text-xs text-gray-600 space-y-1">
+                    {job.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Skills: spans 2 cols */}
           <motion.div
             ref={skillRef}
             initial={{ opacity: 0, y: 40 }}
@@ -101,32 +150,7 @@ export default function AboutClient() {
           >
             <h2 className="font-bold text-lg mb-4">Technical Skills</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {[
-                {
-                  label: "Languages",
-                  items: ["Python", "TypeScript", "JavaScript", "Java", "C", "C++", "SQL"],
-                },
-                {
-                  label: "AI / ML",
-                  items: ["Agentic AI", "AI Agents", "Model Context Protocol (MCP)", "LangChain", "LangGraph", "RAG Pipelines", "LLMs", "Groq", "HuggingFace", "Fine-tuning", "Prompt Engineering", "PyTorch", "scikit-learn", "FAISS"],
-                },
-                {
-                  label: "Web & Backend",
-                  items: ["React", "Next.js", "FastAPI", "Node.js", "Express.js", "Redux", "RESTful APIs"],
-                },
-                {
-                  label: "Databases & Cloud",
-                  items: ["PostgreSQL", "MongoDB", "MySQL", "Supabase", "AWS"],
-                },
-                {
-                  label: "Tools & DevOps",
-                  items: ["Git", "Docker", "CI/CD", "Nginx", "PM2", "Turborepo", "Prisma", "Linux"],
-                },
-                {
-                  label: "Testing",
-                  items: ["Vitest", "Jest", "JUnit"],
-                },
-              ].map(({ label, items }) => (
+              {skills.map(({ label, items }) => (
                 <div key={label}>
                   <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
                     {label}
@@ -143,7 +167,7 @@ export default function AboutClient() {
             </div>
           </motion.div>
 
-          {/* Quick Stats — 1 col, dark */}
+          {/* Quick Stats: 1 col, dark */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isSkillRefInView ? { opacity: 1, y: 0 } : {}}
@@ -165,7 +189,7 @@ export default function AboutClient() {
             <div className="text-xs text-gray-400">📍 Boston, MA</div>
           </motion.div>
 
-          {/* Featured Projects — spans 2 cols */}
+          {/* Featured Projects: spans 2 cols */}
           <motion.div
             ref={projectRef}
             initial={{ opacity: 0, y: 40 }}
@@ -180,55 +204,11 @@ export default function AboutClient() {
               </Link>
             </div>
             <div className="space-y-4">
-              {[
-                {
-                  name: "AI Split",
-                  github: "https://github.com/Abhi-2306/AI-SPLIT",
-                  bullets: [
-                    "Production fintech PWA with Google OAuth, debt graph, group billing, and PWA offline support",
-                    "AI Smart Split: photograph a receipt → Groq LLaMA 4 Scout extracts items → LLaMA 3.3 70B auto-allocates costs. 95%+ receipt line-item parsing accuracy",
-                    "Clean Architecture with 12 isolated use cases; all LLM output validated via Zod",
-                  ],
-                },
-                {
-                  name: "MCP Finance Server",
-                  github: "https://github.com/Abhi-2306/fin-mcp",
-                  bullets: [
-                    "Model Context Protocol server exposing 6 financial-data tools to LLM clients over stdio transport",
-                    "Layered provider architecture with caching and retry/backoff resilience",
-                    "30 unit tests + 18-case eval harness covering market data, quotes, and economic indicators",
-                  ],
-                },
-                {
-                  name: "Trust Agentic Commerce",
-                  github: "https://github.com/ColeLeng/trust-agentic-commerce",
-                  badge: "🏆 1st / 80+ teams",
-                  bullets: [
-                    "Multi-agent security system with 4 isolated security sub-agents and structured verdict aggregation",
-                    "Built with Python, LLMs, and W&B Weave observability · SundAI × W&B Hackathon at MIT, May 2026",
-                  ],
-                },
-                {
-                  name: "DocQuery",
-                  github: "https://github.com/Abhi-2306/docquery",
-                  bullets: [
-                    "End-to-end RAG document QA: PDF ingestion → semantic chunking → vector index → fine-tuned DistilBERT",
-                    "82.88% F1 and 97.30% BERTScore at 80ms latency, evaluated on 5,000 SQuAD validation examples",
-                  ],
-                },
-                {
-                  name: "Kambaz LMS",
-                  github: "https://github.com/Abhi-2306/fa25-kambaz-next-js",
-                  bullets: [
-                    "Full-stack Canvas-like LMS with 30+ RESTful API endpoints for courses, assignments, enrollment, and grade management",
-                    "Compound MongoDB indexes on highest-traffic query paths cut latency by 60%; Dockerized, deployed to AWS via GitHub Actions",
-                  ],
-                },
-              ].map((proj) => (
-                <div key={proj.name} className="border-l-4 border-black pl-4">
+              {FEATURED_PROJECTS.map((proj) => (
+                <div key={proj.title} className="border-l-4 border-black pl-4">
                   <div className="flex justify-between items-start gap-2 flex-wrap">
                     <div className="flex items-center gap-2">
-                      <div className="font-semibold text-sm">{proj.name}</div>
+                      <div className="font-semibold text-sm">{proj.title}</div>
                       {proj.badge && (
                         <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-semibold">
                           {proj.badge}
@@ -244,73 +224,63 @@ export default function AboutClient() {
                       GitHub ↗
                     </a>
                   </div>
-                  <ul className="list-disc ml-4 mt-1.5 text-xs text-gray-600 space-y-1">
-                    {proj.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
+                  {proj.stack && (
+                    <div className="text-xs text-gray-400 mt-0.5">{proj.stack.join(", ")}</div>
+                  )}
+                  {proj.desc && (
+                    <p className="mt-1.5 text-xs text-gray-600 leading-relaxed">{proj.desc}</p>
+                  )}
+                  {proj.bullets && (
+                    <ul className="list-disc ml-4 mt-1.5 text-xs text-gray-600 space-y-1">
+                      {proj.bullets.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Experience — 1 col */}
+          {/* Leadership: 1 col */}
           <motion.div
-            ref={experienceRef}
             initial={{ opacity: 0, y: 40 }}
-            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            animate={isProjectRefInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="bg-white border border-gray-200 rounded-2xl p-6"
           >
-            <h2 className="font-bold text-lg mb-4">Experience</h2>
-            <div className="space-y-5">
-              <div>
-                <div className="font-semibold text-sm">Teaching Assistant</div>
-                <div className="text-xs text-gray-500 italic">DS 3000: Foundations of Data Science</div>
-                <div className="text-xs text-gray-400">Northeastern · Summer 2026 – Present</div>
-              </div>
-              <div>
-                <div className="font-semibold text-sm">Secretary & Lead Developer</div>
-                <div className="text-xs text-gray-500 italic">Computer Society of India</div>
-                <div className="text-xs text-gray-400">Jul 2023 – Oct 2024</div>
-                <ul className="list-disc ml-4 mt-1.5 text-xs text-gray-600 space-y-1">
-                  <li>17-member team managing platforms for 500+ students</li>
-                  <li>MERN stack event management apps</li>
-                  <li>40% engagement increase via automation</li>
-                </ul>
-              </div>
-            </div>
+            <h2 className="font-bold text-lg mb-4">Leadership</h2>
+            <div className="font-semibold text-sm">{leadership.role}</div>
+            <p className="text-xs text-gray-600 mt-1.5 leading-relaxed">{leadership.desc}</p>
           </motion.div>
 
-          {/* Education — spans 2 cols */}
+          {/* Education: spans 2 cols */}
           <motion.div
+            ref={educationRef}
             initial={{ opacity: 0, y: 40 }}
-            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            animate={isEducationRefInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6"
           >
             <h2 className="font-bold text-lg mb-4">Education</h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-gray-50 rounded-xl p-4">
-                <div className="font-semibold text-sm">Northeastern University</div>
-                <div className="text-xs text-gray-500">MS Computer Science · Khoury College</div>
-                <div className="text-xs text-gray-400 mt-0.5">Boston, MA · Aug 2025 – Jun 2027 · GPA: 4.0/4.0</div>
-                <div className="text-xs text-gray-500 mt-2">
-                  Algorithms (CS 5800), NLP (CS 6120), Web Dev (CS 5610), Program Design (CS 5010)
+              {education.map((edu) => (
+                <div key={edu.school} className="bg-gray-50 rounded-xl p-4">
+                  <div className="font-semibold text-sm">{edu.school}</div>
+                  <div className="text-xs text-gray-500">{edu.degree}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{edu.location}</div>
+                  {edu.coursework && (
+                    <div className="text-xs text-gray-500 mt-2">{edu.coursework}</div>
+                  )}
                 </div>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-4">
-                <div className="font-semibold text-sm">CVR College of Engineering</div>
-                <div className="text-xs text-gray-500">B.Tech Computer Science & Engineering</div>
-                <div className="text-xs text-gray-400 mt-0.5">Hyderabad, India · 2021 – 2025 · GPA: 8.9/10</div>
-              </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Certifications — 1 col */}
+          {/* Certifications: 1 col */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            animate={isEducationRefInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="bg-white border border-gray-200 rounded-2xl p-6"
           >
@@ -331,17 +301,15 @@ export default function AboutClient() {
             </ul>
           </motion.div>
 
-          {/* What I'm Looking For — full width, dark */}
+          {/* What I'm Looking For: full width, dark */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={isExperienceRefInView ? { opacity: 1, y: 0 } : {}}
+            animate={isEducationRefInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-3 bg-black text-white rounded-2xl p-6"
           >
             <h2 className="font-bold text-lg mb-2">What I&apos;m Looking For</h2>
-            <p className="text-gray-400 text-sm mb-4">
-              Summer/Fall 2026 internships and Spring/Summer 2027 co-op where I can:
-            </p>
+            <p className="text-gray-400 text-sm mb-4">{availability}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {[
                 "Build production systems with React / Next.js / FastAPI / Node.js",
@@ -355,11 +323,11 @@ export default function AboutClient() {
               ))}
             </div>
             <p className="text-gray-400 text-xs mt-4">
-              📧 pandiri.a@northeastern.edu · 📍 Boston, MA · Open to relocation anywhere in the US · F-1 (CPT/OPT eligible) · Graduating 2027
+              📧 pandiri.a@northeastern.edu · 📍 Boston, MA · Graduating December 2027
             </p>
           </motion.div>
 
-          {/* FAQ — full width */}
+          {/* FAQ: full width */}
           <motion.div
             ref={faqRef}
             initial={{ opacity: 0, y: 40 }}
@@ -369,28 +337,7 @@ export default function AboutClient() {
           >
             <h2 className="font-bold text-lg mb-4">Frequently Asked Questions</h2>
             <dl className="space-y-5">
-              {[
-                {
-                  q: "Is Abhijith authorized to work in the United States?",
-                  a: "Yes — eligible to work in the US via F-1 CPT/OPT for internships and co-ops.",
-                },
-                {
-                  q: "When is Abhijith available for internships?",
-                  a: "Open to Summer/Fall 2026 internships and Spring/Summer 2027 co-op. Graduating 2027. Open to relocation anywhere in the US.",
-                },
-                {
-                  q: "What tech stack does Abhijith specialize in?",
-                  a: "Full-stack and AI engineering: React, Next.js, TypeScript, Python, FastAPI, PostgreSQL, MongoDB, Docker, AWS, and LLM integrations (Groq, HuggingFace, Model Context Protocol, multi-agent systems).",
-                },
-                {
-                  q: "What is Abhijith's academic background?",
-                  a: "MS Computer Science at Northeastern University (4.0 GPA, graduating 2027). Previously B.Tech Computer Science at CVR College of Engineering (GPA: 8.9/10).",
-                },
-                {
-                  q: "Has Abhijith won any hackathons?",
-                  a: "Yes — 1st Place out of 80+ teams at the SundAI × W&B Multi-Agent Hackathon at The Engine, MIT during Boston Tech Week in May 2026.",
-                },
-              ].map(({ q, a }) => (
+              {faq.map(({ q, a }) => (
                 <div key={q} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
                   <dt className="font-semibold text-sm text-gray-900 mb-1">{q}</dt>
                   <dd className="text-sm text-gray-600">{a}</dd>

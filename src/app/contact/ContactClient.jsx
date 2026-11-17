@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { availability } from "@/data/content";
 
 export default function ContactClient() {
     const [success, setSuccess] = useState(false);
@@ -65,7 +66,7 @@ export default function ContactClient() {
                         <div>
                             <h1 className="font-bold text-lg mb-2">Get in Touch</h1>
                             <p className="text-gray-600 text-sm mb-4">
-                                Open to Summer/Fall 2026 internships and Spring/Summer 2027 co-op · F-1 (CPT/OPT eligible) · Let&apos;s connect!
+                                {availability} Let&apos;s connect!
                             </p>
                         </div>
 
@@ -79,12 +80,12 @@ export default function ContactClient() {
 
                             <div className="flex items-center gap-2 justify-center lg:justify-start">
                                 <span className="font-semibold">📍</span>
-                                <span>Boston, MA · Open to relocation anywhere in the US</span>
+                                <span>Boston, MA</span>
                             </div>
 
                             <div className="flex items-center gap-2 justify-center lg:justify-start">
                                 <span className="font-semibold">🎓</span>
-                                <span>Northeastern University · MS CS · Graduating 2027</span>
+                                <span>Northeastern University · MS CS · Graduating December 2027</span>
                             </div>
                         </div>
 

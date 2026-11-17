@@ -2,17 +2,19 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import TransitionProvider from "@/components/transitionProvider";
 import JsonLd from "@/components/JsonLd";
+import { metaDescription } from "@/data/content";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const SITE_TITLE = "Abhijith Pandiri | Full-Stack & Applied AI Engineer";
 
 export const metadata = {
   metadataBase: new URL("https://abhi-porfolio-zeta.vercel.app"),
   title: {
-    default: "Abhijith Pandiri — Full-Stack & AI Engineer",
+    default: SITE_TITLE,
     template: "%s | Abhijith Pandiri",
   },
-  description:
-    "Full-Stack & AI Engineer. MS Computer Science at Northeastern University (4.0 GPA). Built production fintech apps, RAG pipelines, and multi-agent systems. 1st place at SundAI × W&B Multi-Agent Hackathon at MIT. Open to Summer/Fall 2026 internships and Spring/Summer 2027 co-op. F-1 (CPT/OPT eligible).",
+  description: metaDescription,
   keywords: [
     "Abhijith Pandiri",
     "Full-Stack Engineer",
@@ -27,7 +29,7 @@ export const metadata = {
     "Docker",
     "AWS",
     "AI Split",
-    "MCP Finance Server",
+    "Agentic Finance Assistant",
     "Model Context Protocol",
     "Trust Agentic Commerce",
     "DocQuery",
@@ -39,7 +41,7 @@ export const metadata = {
     "Supabase",
     "CPT OPT",
     "F-1 visa",
-    "internship 2026",
+    "internship 2027",
   ],
   authors: [{ name: "Abhijith Pandiri", url: "https://abhi-porfolio-zeta.vercel.app" }],
   creator: "Abhijith Pandiri",
@@ -47,16 +49,14 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://abhi-porfolio-zeta.vercel.app",
-    title: "Abhijith Pandiri — Full-Stack & AI Engineer",
-    description:
-      "Full-Stack & AI Engineer. MS CS at Northeastern (4.0 GPA). Production fintech, RAG, and multi-agent systems. 1st place at MIT hackathon. Open to Summer/Fall 2026 internships.",
+    title: SITE_TITLE,
+    description: metaDescription,
     siteName: "Abhijith Pandiri Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhijith Pandiri — Full-Stack & AI Engineer",
-    description:
-      "Full-Stack & AI Engineer. MS CS at Northeastern (4.0 GPA). Production fintech, RAG, and multi-agent systems. 1st place at MIT hackathon.",
+    title: SITE_TITLE,
+    description: metaDescription,
   },
   robots: {
     index: true,
